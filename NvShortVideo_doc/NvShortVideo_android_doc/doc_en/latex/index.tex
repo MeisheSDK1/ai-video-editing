@@ -1,0 +1,680 @@
+\label{index_md__Users_mac-mini_msshortvideo_doc_markdown_native_quickstart_doc_en_quickstart_android_en}%
+\Hypertarget{index_md__Users_mac-mini_msshortvideo_doc_markdown_native_quickstart_doc_en_quickstart_android_en}%
+ \hypertarget{index_autotoc_md1}{}\doxysection{Development environment requirements}\label{index_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Android studio 2023.\+12+。
+\item J\+DK 11， Target\+Sdk\+Version 34
+\end{DoxyItemize}
+
+\begin{quote}
+⚠️ {\bfseries{Note\+:}} This feature must be run on a physical device, as it is currently not supported on the simulator. \end{quote}
+\hypertarget{index_autotoc_md2}{}\doxysection{Upgrade short video notes}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{Version 1.\+5.\+1 Updates\+:}\label{index_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Fixed some known issues 
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysubsection{Version 1.\+5.\+0 Updates\+:}\label{index_autotoc_md4}
+
+\begin{DoxyItemize}
+\item This release involves significant updates; therefore, regression testing is absolutely essential prior to deployment—particularly regarding changes to configuration settings. 
+\end{DoxyItemize}\hypertarget{index_autotoc_md5}{}\doxysubsection{1.\+4.\+0 Version upgrade\+:}\label{index_autotoc_md5}
+
+\begin{DoxyItemize}
+\item The Android version of the Auto\+Cut video creation tool has not been upgraded, so the Android interface remains unchanged and requires no modifications. This is different from the i\+OS version. If you need to integrate with the Auto\+Cut video creation tool, please contact our relevant colleagues in the group. 
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysubsection{1.\+3.\+0 Version upgrade\+:}\label{index_autotoc_md6}
+
+\begin{DoxyItemize}
+\item 1.\+Editor UI Update\+: Adjusted the “\+Next” and “\+Save” buttons to be positioned in the bottom menu.
+\item 2.\+Added Meishe S\+DK Export Configuration Options\+: New parameters supported for export configuration. For details, see\+: \href{https://www.meishesdk.com/android/doc_en/html/content/classcom_1_1meicam_1_1sdk_1_1NvsStreamingContext.html\#COMPILE_VIDEO_RESOLUTION_GRADE}{\texttt{ Meishe S\+DK Compile\+Config Documentation}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{private} \textcolor{keywordtype}{void} testCompileConfig() \{}
+\DoxyCodeLine{        mVideoConfig = NvModuleManager.get().getConfig();}
+\DoxyCodeLine{        \textcolor{keywordflow}{if} (\textcolor{keyword}{null} == mVideoConfig) \{}
+\DoxyCodeLine{            mVideoConfig = \textcolor{keyword}{new} NvVideoConfig();}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        NvCompileConfig compileConfig = mVideoConfig.getCompileConfig();}
+\DoxyCodeLine{        Map<String, Object> compileMap = \textcolor{keyword}{new} HashMap<>();}
+\DoxyCodeLine{        compileMap.put(VIDEO\_ENCODEC\_NAME, \textcolor{stringliteral}{"hevc"});}
+\DoxyCodeLine{        compileConfig.setConfigure(compileMap);}
+\DoxyCodeLine{\textcolor{comment}{//        compileConfig.setFps(30);}}
+\DoxyCodeLine{        mVideoConfig.setCompileConfig(compileConfig);}
+\DoxyCodeLine{    \}}
+\end{DoxyCode}
+
+\item 3.\+Added Support for Multiple Image Exports and Extended Publish Data Retrieval\+: Supports retrieving video path, image paths, and music\+Info data. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{NvPublishInfo publishInfo = NvModuleManager.get().getPublishInfo();}
+\DoxyCodeLine{    \textcolor{comment}{// 单张图片路径  only for image path}}
+\DoxyCodeLine{    String coverPath = publishInfo.getCoverPath();}
+\DoxyCodeLine{    \textcolor{comment}{// 音乐信息  music info}}
+\DoxyCodeLine{    NvMusicInfo musicInfo = publishInfo.getMusicInfo();}
+\DoxyCodeLine{    \textcolor{comment}{// 多张图片路径集合 multiple image path}}
+\DoxyCodeLine{    List<String> imagesPath = publishInfo.getImagesPath();}
+\DoxyCodeLine{    \textcolor{comment}{// 视频路径 video path}}
+\DoxyCodeLine{    String videoPath = publishInfo.getVideoPath();}
+\end{DoxyCode}
+
+\item 4.\+Added New A\+PI to Check Multi-\/\+Image Export Support. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{boolean} onlyHaveMultipleImage = NvModuleManager.get().isOnlyHaveMultipleImage();}
+\end{DoxyCode}
+
+\item 5.\+Added Capture Configuration Options\+: Allows setting default capture mode among Photo, Video, and Quick Shot. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{private} \textcolor{keywordtype}{void} testCaptureConfig() \{}
+\DoxyCodeLine{    mVideoConfig = NvModuleManager.get().getConfig();}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\textcolor{keyword}{null} == mVideoConfig) \{}
+\DoxyCodeLine{        mVideoConfig = \textcolor{keyword}{new} NvVideoConfig();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    NvCaptureConfig captureConfig = mVideoConfig.getCaptureConfig();}
+\DoxyCodeLine{    \textcolor{comment}{// NvCaptureBottomMenuItem.image}}
+\DoxyCodeLine{    \textcolor{comment}{// NvCaptureBottomMenuItem.video}}
+\DoxyCodeLine{    \textcolor{comment}{// NvCaptureBottomMenuItem.smart}}
+\DoxyCodeLine{    captureConfig.setDefaultBottomMenuSelectItem(NvCaptureConfig.NvCaptureBottomMenuItem.video);}
+\DoxyCodeLine{    mVideoConfig.setCaptureConfig(captureConfig);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+\item 6.\+Added Support for Shadow Configuration of Text in Capture and Edit Menus. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{private} \textcolor{keywordtype}{void} testShadowLayer() \{}
+\DoxyCodeLine{    mVideoConfig = NvModuleManager.get().getConfig();}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\textcolor{keyword}{null} == mVideoConfig) \{}
+\DoxyCodeLine{        mVideoConfig = \textcolor{keyword}{new} NvVideoConfig();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{comment}{// 设置阴影颜色 setting shadow color}}
+\DoxyCodeLine{    mVideoConfig.setShadowColor(\textcolor{stringliteral}{"\#FC3E5A"});}
+\DoxyCodeLine{    \textcolor{comment}{// 设置阴影偏移量 setting shadow offset}}
+\DoxyCodeLine{    NvShadowOffsetConfig nvShadowOffsetConfig = \textcolor{keyword}{new} NvShadowOffsetConfig(0, 1);}
+\DoxyCodeLine{    mVideoConfig.setShadowOffset(nvShadowOffsetConfig);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+\item 7.\+Fix\+: Resolved a UI disorder issue that occurred in specific environments when opening the bottom filter popup during capture.
+\item 8.\+Optimization\+: Added validation to check whether data in the photo album actually exists. If not, a prompt will appear indicating that the video or photo does not exist.
+\item 9.\+Optimization\+: When dragging the bottom progress bar in the editor, all operation menus are temporarily hidden for a cleaner user experience.
+\item 10.\+Android Adaptation for 16k Support.
+\item 11.\+Api Update： Unified the export data retrieval interface in {\bfseries{Nv\+Module\+Manager.\+java}}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \textcolor{comment}{// public interface OnCompileImageListener \{}}
+\DoxyCodeLine{ \textcolor{comment}{//     void onCompileFinished(boolean isSuccess, String path);}}
+\DoxyCodeLine{ \textcolor{comment}{// \}}}
+\DoxyCodeLine{\textcolor{keyword}{public} \textcolor{keyword}{interface }OnCompileImageListener \{}
+\DoxyCodeLine{     \textcolor{keywordtype}{void} onCompileFinished(\textcolor{keywordtype}{boolean} isSuccess);}
+\DoxyCodeLine{ \}}
+\DoxyCodeLine{ \textcolor{comment}{// The path is now uniformly retrieved from NvPublishInfo}}
+\DoxyCodeLine{ NvModuleManager.get().getPublishInfo();}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysubsection{1.\+2.\+9 Version upgrade\+:}\label{index_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Version 1.\+2.\+9 adds the function of exporting videos and pictures with watermarks. If the user configures a watermark, the video and cover will be watermarked when exported. 
+\end{DoxyItemize}\hypertarget{index_autotoc_md8}{}\doxysubsection{1.\+2.\+8 Version upgrade：}\label{index_autotoc_md8}
+In version 1.\+2.\+7, you need to download resources before entering shooting, editing, and co-\/shooting. The new version will not block the entry into shooting, editing, and co-\/shooting, and will silently download in the background when entering. It also provides an interface for users to actively call it. If the user does not actively call shortvideo, it will be called by default. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{public} \textcolor{keywordtype}{void} downloadPrefabricatedMaterial(Activity activity, OnAssetsRequestListener onAssetsRequestListener)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md9}{}\doxysubsection{1.\+2.\+7 Version upgrade：}\label{index_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Directly Replace the A\+AR Library in the Native Project In version 1.\+2.\+7, a new callback was added to the existing interfaces when entering the shooting, duet, and editing features. This callback is used to monitor the completion status of the built-\/in resource download. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{NvModuleManager.java\} }
+\DoxyCodeLine{//Shooting entrance}
+\DoxyCodeLine{-\/ public void openCapture(Activity activity, NvVideoConfig videoConfig, NvMusicInfo musicInfo, OnAssetsRequestListener onAssetsRequestListener);}
+\DoxyCodeLine{//PIP entrance}
+\DoxyCodeLine{-\/ public void startDualCapture(Activity activity, NvVideoConfig videoConfig, OnAssetsRequestListener onAssetsRequestListener);}
+\DoxyCodeLine{//Editing entrance}
+\DoxyCodeLine{-\/ public void openEdit(Activity activity, NvVideoConfig videoConfig, OnAssetsRequestListener onAssetsRequestListener);}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_autotoc_md10}{}\doxysection{Support media formats}\label{index_autotoc_md10}
+For details, see\+: \href{https://www.meishesdk.com/android/doc_en/html/content/Introduction_8md.html}{\texttt{ Meishes sdk product overview}}\hypertarget{index_autotoc_md11}{}\doxysection{Project construction}\label{index_autotoc_md11}
+
+\begin{DoxyEnumerate}
+\item New android project
+
+Run File—new—\+New Project， After making the following settings, click finish.
+
+
+\item Copy the aar package to the libs directory
+
+Place the Nv\+Short\+Video\+Core. aar package in the libs directory
+\item Place the meishesdk.\+lic in the assets directory
+
+
+\end{DoxyEnumerate}
+
+\begin{quote}
+The meisesdk.\+lic is a license applied for through the official website of Meishi Photography, which is bound to the appid.
+
+After registering as a user on \href{https://en.meishesdk.com/}{\texttt{ Meishe‘s official website}}, create an application and configure the App package name. After a Meishe business colleague activates the authorization, you can download the authorization file in the application information.
+
+The S\+DK authorization is bound to the Bundle Idenfity of the App. When it is not authorized, all functions of the S\+DK can be used without checking the authorization, and the drawn picture will have the M\+E\+I\+S\+HE watermark. \end{quote}
+
+
+
+\begin{DoxyEnumerate}
+\item Create Dependencies
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extMutilDex}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extAndroidXDesign}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extAppcompat}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extAppcompatRecycler}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extConstraintLayout}}
+\DoxyCodeLine{//\textcolor{keyword}{Gson}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extGoogleGson}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extWebpdecoder}}
+\DoxyCodeLine{//\textcolor{keyword}{Utils}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.utils}}
+\DoxyCodeLine{//\textcolor{keyword}{BRVAH}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.brvah}}
+\DoxyCodeLine{// \textcolor{keyword}{glide} 4.6.1\string~4.9.0 (\textcolor{keyword}{exclude} \textcolor{keyword}{broken} \textcolor{keyword}{version} 4.6.0, 4.7.0)}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extBumptechGlide}}
+\DoxyCodeLine{\textcolor{keyword}{annotationProcessor} \textcolor{keyword}{rootProject.ext.dependencies.extGlideAnnotation}}
+\DoxyCodeLine{//\textcolor{keyword}{permission}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.permissionx}}
+\DoxyCodeLine{//\textcolor{keyword}{Smart} \textcolor{keyword}{refresh}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.smartRefreshLayout}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.smartRefreshHeader}}
+\DoxyCodeLine{//\textcolor{keyword}{room}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.room}}
+\DoxyCodeLine{\textcolor{keyword}{annotationProcessor} \textcolor{keyword}{rootProject.ext.dependencies.roomComplier}}
+\DoxyCodeLine{//\textcolor{keyword}{okhttp}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.extOkhttp}}
+\DoxyCodeLine{//\textcolor{keyword}{exoplayer}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.exoplayer}}
+\DoxyCodeLine{//\textcolor{keyword}{eventBus}}
+\DoxyCodeLine{\textcolor{keyword}{implementation} \textcolor{keyword}{rootProject.ext.dependencies.eventBus}}
+\end{DoxyCode}
+
+
+\begin{quote}
+Dependencies can be found in config.\+gradle. \end{quote}
+\hypertarget{index_autotoc_md12}{}\doxysubsection{Permission description}\label{index_autotoc_md12}
+The app requires the following permissions, otherwise it will not be able to use the short video module.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.SYSTEM\_ALERT\_WINDOW"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.CAMERA"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.RECORD\_AUDIO"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.WRITE\_EXTERNAL\_STORAGE"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.READ\_EXTERNAL\_STORAGE"} /> \textcolor{comment}{<!-\/-\/ <uses-\/permission android:name="android.permission.MOUNT\_UNMOUNT\_FILESYSTEMS" /> -\/-\/>}}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.INTERNET"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.ACCESS\_NETWORK\_STATE"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.VIBRATE"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.WAKE\_LOCK"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.ACCESS\_NOTIFICATION\_POLICY"} /> \textcolor{comment}{<!-\/-\/ <uses-\/permission android:name="android.permission.INTERNET" /> -\/-\/>}}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.ACCESS\_WIFI\_STATE"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.CHANGE\_WIFI\_STATE"} /> \textcolor{comment}{<!-\/-\/ 用于进行网络定位 -\/-\/>}}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.ACCESS\_COARSE\_LOCATION"} /> \textcolor{comment}{<!-\/-\/ 用于访问GPS定位 -\/-\/>}}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.ACCESS\_FINE\_LOCATION"} /> \textcolor{comment}{<!-\/-\/ 用于读取手机当前的状态 -\/-\/>}}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.REQUEST\_INSTALL\_PACKAGES"} />}
+\DoxyCodeLine{   <\textcolor{keywordtype}{uses-\/permission} \textcolor{keyword}{android:name}=\textcolor{stringliteral}{"android.permission.EXPAND\_STATUS\_BAR"} />}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md13}{}\doxysubsection{Meishe S\+D\+K authorization}\label{index_autotoc_md13}
+After registering as a user on \href{https://en.meishesdk.com/}{\texttt{ Meishe‘s official website}}, create an application and configure the App package name. After a Meishe business colleague activates the authorization, you can download the authorization file in the application information.
+
+Need to add the lic file to the asset directory of the App project.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Run NvModuleManager.initSdk(\textcolor{stringliteral}{"assets:/meishesdk.lic"}) method.}
+\end{DoxyCode}
+
+
+\begin{quote}
+The S\+DK authorization is bound to the Bundle Idenfity of the App. When it is not authorized, all functions of the S\+DK can be used without checking the authorization, and the drawn picture will have the M\+E\+I\+S\+HE watermark. \end{quote}
+\hypertarget{index_autotoc_md14}{}\doxysubsection{Network interface configuration}\label{index_autotoc_md14}
+The filters, stickers, music and other files used in the short video module are all obtained through the network interface. Mainly configured through setting up the host.
+
+The method is defined in the Nvs\+Server\+Client.\+java file
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Init net host}
+\DoxyCodeLine{     *  \(\backslash\)param application The application}
+\DoxyCodeLine{     *  \(\backslash\)param host the host}
+\DoxyCodeLine{     *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 初始化网路}
+\DoxyCodeLine{     *  \(\backslash\)param application app}
+\DoxyCodeLine{     *  \(\backslash\)param host host}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void initConfig(Application application, String host)}
+\end{DoxyCode}
+
+
+In Engine\+Net\+Api. Java, various functional interfaces are defined, and the following variables can be modified to configure the functional interfaces.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{     * 根据分类获取素材列表}
+\DoxyCodeLine{     * Get a list of materials by category}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_REQUEST\_URL = "materialcenter/mall/custom/listAllAssemblyMaterial";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 根据素材类型获取素材分类列表}
+\DoxyCodeLine{     * Gets a classified list of materials based on their type}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_CATEGORY\_URL = "materialcenter/appSdkApi/listTypeAndCategory";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 获取字体列表}
+\DoxyCodeLine{     * Get font list}
+\DoxyCodeLine{     * materialcenter/appSdkApi/material/listAll}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_FONT\_URL = "materialcenter/listFont";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 获取音乐列表}
+\DoxyCodeLine{     * Get music list}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_MUSICIANS\_URL = "materialcenter/appSdkApi/listMusic";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 把素材的id作为参数传入，获取到素材下载的链接}
+\DoxyCodeLine{     * Pass in the id of the material as a parameter to get the link to the material download}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_DOWNLOAD\_URL = "materialcenter/mall/custom/materialInteraction";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 获取预置素材}
+\DoxyCodeLine{     * Get the Prefabricated material for the project}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_PREFABRICATED\_URL = "materialcenter/beautyAssets/latest";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 一键成片}
+\DoxyCodeLine{     * AutoCut}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_AUTOCUT\_URL = "materialcenter/recommend/listTemplate";}
+\DoxyCodeLine{    /**}
+\DoxyCodeLine{     * 获取模版的标签分类}
+\DoxyCodeLine{     * Gets the label classification of the template}
+\DoxyCodeLine{     * materialcenter/appSdkApi/listTemplateTag}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static String NV\_ASSET\_TAG\_URL = "materialcenter/listTemplateTag";}
+\DoxyCodeLine{    /** 公共参数}
+\DoxyCodeLine{      *Default parameters}
+\DoxyCodeLine{      */}
+\DoxyCodeLine{    NvsServerClient.MallInfo.CLIENT\_ID = NV\_ClientId;}
+\DoxyCodeLine{    NvsServerClient.MallInfo.CLIENT\_SECRET = NV\_ClientSecret;}
+\DoxyCodeLine{    NvsServerClient.MallInfo.ASSEMBLY\_ID = NV\_AssemblyId;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md15}{}\doxysubsection{Preset material}\label{index_autotoc_md15}
+The material packages that the short video module relies on can be selected as needed. For details of preset materials, see\+: \href{./PrefabricatedMaterial_en.html}{\texttt{ Short video module preset materials}}\hypertarget{index_autotoc_md16}{}\doxysubsection{Main methods of short video module}\label{index_autotoc_md16}
+The module main methods are defined in the Nv\+Module\+Manager.\+java file.\hypertarget{index_autotoc_md17}{}\doxysubsubsection{Initialize S\+DK}\label{index_autotoc_md17}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief InitSdk}
+\DoxyCodeLine{    *  @param licPath the licPath}
+\DoxyCodeLine{    *  \(\backslash\)else}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief 美摄SDK授权}
+\DoxyCodeLine{    *  @param licPath 授权文件}
+\DoxyCodeLine{    *  \(\backslash\)endif}
+\DoxyCodeLine{    */}
+\DoxyCodeLine{   public void initSdk(String licPath)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md18}{}\doxysubsubsection{Video recording}\label{index_autotoc_md18}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Open capture}
+\DoxyCodeLine{     *  @param activity the activity}
+\DoxyCodeLine{     *  @param videoConfig the config information}
+\DoxyCodeLine{     *  @param musicInfo the config music information}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 打开拍摄}
+\DoxyCodeLine{     *  @param activity 授权文件}
+\DoxyCodeLine{     *  @param videoConfig 配置信息}
+\DoxyCodeLine{     *  @param musicInfo 音乐信息}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void openCapture(Activity activity, NvVideoConfig videoConfig, NvMusicInfo musicInfo)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md19}{}\doxysubsubsection{Picture in Picture}\label{index_autotoc_md19}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Open dual capture.Open the album, and jump to the dual capture activity.}
+\DoxyCodeLine{     *  @param activity the activity}
+\DoxyCodeLine{     *  @param videoConfig the config information}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 打开合拍 即跳转相册，进入合拍页面}
+\DoxyCodeLine{     *  @param activity activity}
+\DoxyCodeLine{     *  @param videoConfig 配置信息}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void openDualCapture(Activity activity, NvVideoConfig videoConfig)}
+\DoxyCodeLine{}
+\DoxyCodeLine{ /** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Open dual capture.Open the album, and jump to the dual capture activity.}
+\DoxyCodeLine{     *  @param activity the activity.}
+\DoxyCodeLine{     * If you need to configure the export path, you need to call this method}
+\DoxyCodeLine{     *  @param videoConfig the config information}
+\DoxyCodeLine{     *  @param videoPath The video path prepared for co production must be a local path.}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 打开合 拍即跳转相册，进入合拍页面}
+\DoxyCodeLine{     *  如果需要配置导出路径，需要调用此方法}
+\DoxyCodeLine{     *  @param activity 授权文件}
+\DoxyCodeLine{     *  @param videoConfig 配置信息}
+\DoxyCodeLine{     *  @param videoPath 准备合拍的视频路径，必须是本地路径}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void openDualCapture(Activity activity, NvVideoConfig videoConfig, String videoPath)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md20}{}\doxysubsubsection{Video editing}\label{index_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Open edit}
+\DoxyCodeLine{     *  @param activity the activity}
+\DoxyCodeLine{     *  @param videoConfig the config information}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 打开编辑}
+\DoxyCodeLine{     *  @param activity activity}
+\DoxyCodeLine{     *  @param videoConfig 配置信息}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void openEdit(Activity activity, NvVideoConfig videoConfig)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md21}{}\doxysubsubsection{Video editing complete callback}\label{index_autotoc_md21}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{public interface NvModuleManagerCallback \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{    /** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Publish with info callback}
+\DoxyCodeLine{     *  @param activity The activity}
+\DoxyCodeLine{     *  @param needSaveDraft Need save draft or not.}
+\DoxyCodeLine{     *  @param needSaveCover Need save cover or not.}
+\DoxyCodeLine{     *  @param needSaveVideo Need save video or not.}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 跳转发布页面回调}
+\DoxyCodeLine{     *  @param activity The activity}
+\DoxyCodeLine{     *  @param needSaveDraft 是否要保存草稿}
+\DoxyCodeLine{     *  @param needSaveCover 是否要保存封面}
+\DoxyCodeLine{     *  @param needSaveVideo 是否要保存视频}
+\DoxyCodeLine{     *  @param videoPath 视频地址}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    void publishWithInfo(Activity activity, boolean needSaveDraft, boolean needSaveCover, boolean needSaveVideo, String videoPath)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md22}{}\doxysubsubsection{Select cover}\label{index_autotoc_md22}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** if ENGLISH}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief EditCover}
+\DoxyCodeLine{    *  @param activity the from activity}
+\DoxyCodeLine{    *  @param overPoint Last editing time for cover page}
+\DoxyCodeLine{    *  @param requestCode The request code}
+\DoxyCodeLine{    *  \(\backslash\)else}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief 编辑封面}
+\DoxyCodeLine{    *  @param  activity 编辑封面的发起页面}
+\DoxyCodeLine{    *  @param  overPoint 上一次编辑封面的时间点}
+\DoxyCodeLine{    *  @param  requestCode 请求code}
+\DoxyCodeLine{    *  \(\backslash\)endif}
+\DoxyCodeLine{    */}
+\DoxyCodeLine{   public static void editCover(Activity activity, long overPoint, int requestCode)}
+\DoxyCodeLine{}
+\DoxyCodeLine{   //Cover editing will not generate a Bitmap. The selection time of the cover will be returned in the onActivityResult method callback, with the key being "coverPoint".}
+\DoxyCodeLine{   public static final String INTENT\_KEY\_COVER\_POINT = "coverPoint";}
+\DoxyCodeLine{}
+\DoxyCodeLine{  //Bitmap can be obtained through the methods in CaptureAndEditUtil.java.}
+\DoxyCodeLine{}
+\DoxyCodeLine{   /** if ENGLISH}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief Get image from timeline}
+\DoxyCodeLine{    *  @param overPoint The cover point}
+\DoxyCodeLine{    *  \(\backslash\)else}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief 获取时间线上某一帧图片的bitmap}
+\DoxyCodeLine{    *  @param  overPoint 选择封面的时间点}
+\DoxyCodeLine{    *  \(\backslash\)endif}
+\DoxyCodeLine{    */}
+\DoxyCodeLine{   public static Bitmap getImageFromTime(long overPoint)}
+\end{DoxyCode}
+
+
+$>$If you need to save the cover, see the Save Cover interface.\hypertarget{index_autotoc_md23}{}\doxysubsubsection{Save draft}\label{index_autotoc_md23}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Save draft}
+\DoxyCodeLine{     *  @param videoDesc The draft description}
+\DoxyCodeLine{     *  @param coverPoint The cover point}
+\DoxyCodeLine{     *  @param callBack The draft save callback}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 保存草稿}
+\DoxyCodeLine{     *  @param videoDesc 草稿描述}
+\DoxyCodeLine{     *  @param coverPoint 草稿封面}
+\DoxyCodeLine{     *  @param callBack 保存草稿回调}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void saveDraft(String videoDesc, long coverPoint, DraftManager.DraftSaveCallBack callBack)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md24}{}\doxysubsubsection{Synthetic video}\label{index_autotoc_md24}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Save video to album}
+\DoxyCodeLine{     *  @param callback The on compile video listener}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 保存视频到相册}
+\DoxyCodeLine{     *  @param  callback 保存视频回调}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public static void saveVideoToAlbum(OnCompileVideoListener callback)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md25}{}\doxysubsubsection{Video synthesis callback}\label{index_autotoc_md25}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{public interface OnCompileVideoListener \{}
+\DoxyCodeLine{        /**! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief compile video progress callback}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline  the current timeline}
+\DoxyCodeLine{         *  \(\backslash\)@param progress  the current progress}
+\DoxyCodeLine{         *  \(\backslash\)else}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief 合成视频进度回调}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline 当前的时间线}
+\DoxyCodeLine{         *  \(\backslash\)@param progress 当前的进度}
+\DoxyCodeLine{         *  \(\backslash\)endif}
+\DoxyCodeLine{         */}
+\DoxyCodeLine{        void compileProgress(NvsTimeline timeline,int progress);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        /**! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief compile video finished callback}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline  the current timeline}
+\DoxyCodeLine{         *  \(\backslash\)else}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief 合成视频完成回调}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline 当前的时间线}
+\DoxyCodeLine{         *  \(\backslash\)endif}
+\DoxyCodeLine{         */}
+\DoxyCodeLine{        void compileFinished(NvsTimeline timeline);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        /**! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief compile video failed callback}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline  the current timeline}
+\DoxyCodeLine{         *  \(\backslash\)else}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief 合成视频失败回调}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline 当前的时间线}
+\DoxyCodeLine{         *  \(\backslash\)endif}
+\DoxyCodeLine{         */}
+\DoxyCodeLine{        void compileFailed(NvsTimeline timeline);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{         /**! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief compile video completed callback}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline  the current timeline}
+\DoxyCodeLine{         *  \(\backslash\)@param compileVideoPath  the compile video path}
+\DoxyCodeLine{         *  \(\backslash\)@param isCanceled  The compile is canceled or not}
+\DoxyCodeLine{         *  \(\backslash\)else}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief 合成视频完成回调}
+\DoxyCodeLine{         *  \(\backslash\)@param timeline 当前的时间线}
+\DoxyCodeLine{         *  \(\backslash\)@param compileVideoPath 保存路径}
+\DoxyCodeLine{         *  \(\backslash\)@param isCanceled 合成是否被取消}
+\DoxyCodeLine{         *  \(\backslash\)endif}
+\DoxyCodeLine{         */}
+\DoxyCodeLine{        void compileCompleted(NvsTimeline nvsTimeline, String compileVideoPath, boolean isCanceled);}
+\DoxyCodeLine{}
+\DoxyCodeLine{        /**! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief compile video cancel callback}
+\DoxyCodeLine{         *  \(\backslash\)else}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief 合成视频被取消回调}
+\DoxyCodeLine{         *  \(\backslash\)endif}
+\DoxyCodeLine{         */}
+\DoxyCodeLine{        void compileVideoCancel();}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{        /**! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief compile video completed callback}
+\DoxyCodeLine{         *  \(\backslash\)@param isHardwareEncoder Is hardware encoder or not}
+\DoxyCodeLine{         *  \(\backslash\)@param errorType The error type}
+\DoxyCodeLine{         *  \(\backslash\)@param stringInfo The error string info}
+\DoxyCodeLine{         *  \(\backslash\)@param flags the  flags}
+\DoxyCodeLine{         *  \(\backslash\)else}
+\DoxyCodeLine{         *}
+\DoxyCodeLine{         *  \(\backslash\)brief 合成视频完成回调}
+\DoxyCodeLine{         *  \(\backslash\)@param isHardwareEncoder 是否是硬件错误}
+\DoxyCodeLine{         *  \(\backslash\)@param errorType 错误类型}
+\DoxyCodeLine{         *  \(\backslash\)@param stringInfo 提示信息}
+\DoxyCodeLine{         *  \(\backslash\)@param flags the  flags}
+\DoxyCodeLine{         *  \(\backslash\)endif}
+\DoxyCodeLine{         */}
+\DoxyCodeLine{        void onCompileCompleted(boolean isHardwareEncoder, int errorType, String stringInfo, int flags);}
+\DoxyCodeLine{    \}}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md26}{}\doxysubsubsection{Save cover image}\label{index_autotoc_md26}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Save cover}
+\DoxyCodeLine{     *  @param  coverDir the cover file dir.}
+\DoxyCodeLine{     *  @param  coverFileName the cover file name.If empty, it is a timestamp.}
+\DoxyCodeLine{     *  @param  coverTime the coverTime}
+\DoxyCodeLine{     *   @param  needSaveToAlbum Need Save To Album or not}
+\DoxyCodeLine{     *   @param  callBack the on cover saved callback for update ui}
+\DoxyCodeLine{     *  @return the boolean Did you successfully execute the save draft}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 保存封面}
+\DoxyCodeLine{     *  @param  coverDir 封面文件夹路径}
+\DoxyCodeLine{     *  @param  coverFileName 封面文件明显,如果为空，则是时间戳}
+\DoxyCodeLine{     *  @param  coverTime 封面时间点}
+\DoxyCodeLine{     *  @param  needSaveToAlbum 是否需要保存封面}
+\DoxyCodeLine{     *  @param  callBack 保存草稿回调，用于更新UI}
+\DoxyCodeLine{     *  @return the boolean 是否执行保存草稿成功}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public boolean saveCover(String coverDir, String coverFileName, long coverTime, boolean needSaveToAlbum, OnCoverSavedCallBack callBack)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md27}{}\doxysubsubsection{Exit short video module}\label{index_autotoc_md27}
+Call it when the video publishing page exits
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Finish publish}
+\DoxyCodeLine{     *  @param activity The activity}
+\DoxyCodeLine{     *  @param toActivityClassName The next activity classname you want to}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 退出发布页}
+\DoxyCodeLine{     *  @param activity 当前页面}
+\DoxyCodeLine{     *  @param toActivityClassName 要去的页面的类名}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void finishPublish(Activity activity, String toActivityClassName)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md28}{}\doxysubsubsection{Get draft list}\label{index_autotoc_md28}
+The method is defined in Draft\+Manager.\+java
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{   *}
+\DoxyCodeLine{   *  \(\backslash\)brief Get all draft data}
+\DoxyCodeLine{   *  @return  The draft data list}
+\DoxyCodeLine{   *  \(\backslash\)else}
+\DoxyCodeLine{   *}
+\DoxyCodeLine{   *  \(\backslash\)brief 获取草稿数据}
+\DoxyCodeLine{   *  @return  The draft data list}
+\DoxyCodeLine{   *  \(\backslash\)endif}
+\DoxyCodeLine{   */}
+\DoxyCodeLine{  public List<DraftData> getAllDraftData()}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md29}{}\doxysubsubsection{Delete draft}\label{index_autotoc_md29}
+The method is defined in Draft\+Manager.\+java
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief Delete draft}
+\DoxyCodeLine{     *  @param   draftData The draft data}
+\DoxyCodeLine{     *  \(\backslash\)else}
+\DoxyCodeLine{     *}
+\DoxyCodeLine{     *  \(\backslash\)brief 获取草稿数据}
+\DoxyCodeLine{     *  @param  draftData The draft data}
+\DoxyCodeLine{     *  \(\backslash\)endif}
+\DoxyCodeLine{     */}
+\DoxyCodeLine{    public void deleteDraft(final DraftData draftData)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md30}{}\doxysubsubsection{Open draft}\label{index_autotoc_md30}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/** \(\backslash\)if ENGLISH}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief Open draft and jump to edit activity}
+\DoxyCodeLine{    *  @param activity The activity}
+\DoxyCodeLine{    *  @param draftData the draft data}
+\DoxyCodeLine{    *  \(\backslash\)else}
+\DoxyCodeLine{    *}
+\DoxyCodeLine{    *  \(\backslash\)brief 打开草稿,并跳转编辑页面}
+\DoxyCodeLine{    *  @param activity 当前页面}
+\DoxyCodeLine{    *  @param draftData 草稿数据}
+\DoxyCodeLine{    *  \(\backslash\)endif}
+\DoxyCodeLine{    */}
+\DoxyCodeLine{   public void openDraftAndJumpToEdit(Activity activity, DraftData draftData)}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md31}{}\doxysubsection{Module settings}\label{index_autotoc_md31}
+The short video module setting class Nv\+Video\+Config includes function module settings and UI customization. For details, see\+: \href{functionConfiguration_en.html}{\texttt{ Short video function module settings}}、\href{UIConfiguration_en.html}{\texttt{ Short video UI module settings}} 

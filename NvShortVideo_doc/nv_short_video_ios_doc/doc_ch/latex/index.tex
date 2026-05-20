@@ -1,0 +1,685 @@
+\label{index_md__Users_mac-mini_msshortvideo_doc_markdown_native_quickstart_doc_ch_quickstart_ch}%
+\Hypertarget{index_md__Users_mac-mini_msshortvideo_doc_markdown_native_quickstart_doc_ch_quickstart_ch}%
+ \hypertarget{index_autotoc_md1}{}\doxysection{接入必须流程}\label{index_autotoc_md1}
+
+\begin{DoxyItemize}
+\item 先按照当前文档，集成
+\item 联系商务要sdk的授权
+\item shortvideo默认调用的是美摄自己的服务器，接入后要求把服务器移植到客户自己服务器上，这里你可以联系商务，我们会安排同事帮你部署服务器。
+\item 如果你要修改当前app的显示你可以参考当前文档的\+U\+I配置，或者模块配置来修改（如果不需要修改\+U\+I，不用理会这一条）
+\end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{开发环境要求}\label{index_autotoc_md2}
+
+\begin{DoxyItemize}
+\item i\+OS 12.\+0 及以上的 i\+Phone
+\item Swift 5
+\item Cocoa\+Pods
+\end{DoxyItemize}
+
+\begin{quote}
+⚠️ {\bfseries{Note\+:}} 需要在真机上运行，模拟器暂不支持 \end{quote}
+\hypertarget{index_autotoc_md3}{}\doxysection{升级短视频注意事项}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{2.\+0.\+0版本升级\+:}\label{index_autotoc_md4}
+
+\begin{DoxyItemize}
+\item 修复了一些已知问题 
+\end{DoxyItemize}\hypertarget{index_autotoc_md5}{}\doxysubsection{1.\+5.\+1版本升级\+:}\label{index_autotoc_md5}
+
+\begin{DoxyItemize}
+\item 修复了一些已知问题 
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysubsection{1.\+5.\+0版本升级\+:}\label{index_autotoc_md6}
+
+\begin{DoxyItemize}
+\item 此版本更新较大，上线之前一定要进行回归测试，尤其是配置项的变化 
+\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysubsection{1.\+4.\+0版本升级\+:}\label{index_autotoc_md7}
+
+\begin{DoxyItemize}
+\item 短视频内部几乎代码转为swift开发，在native的使用上有一些变化,重点关注shortvideo暴露的swift接口变化以及回调是否正常触发
+\item Nv\+Streaming\+Sdk\+Core.\+xcframework升级到3.15.\+3，如果你是从1.4.\+0版本以下升级到这个版本，需要联系商务同事更新sdk授权
+\item 一键成片做了全新升级，可以在支持群联系服务端开发同事协助升级服务端接口，这个只在ios上做了升级，安卓并没有做升级，所以使用一键成片功能，一定要联系我们的服务端同事协助升级。有任何问题都可以联系我们 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{private func setWebConfig() \{}
+\DoxyCodeLine{      let moduleManager = NvModuleManager.sharedInstance()}
+\DoxyCodeLine{      let request = moduleManager.netDelegate!}
+\DoxyCodeLine{      request.dependencyDelegate = dependencyDelegate}
+\DoxyCodeLine{      request.setHost("https://mall.meishesdk.com/api/shortvideo/v1")}
+\DoxyCodeLine{      request.assetAutoCutUrl = "https://creative.meishesdk.com/api/app/aivideo/asset/all/1"}
+\DoxyCodeLine{      }
+\DoxyCodeLine{      if isCurrentLanguageNoChinese() \{}
+\DoxyCodeLine{          request.isAbroad = 1}
+\DoxyCodeLine{      \}}
+\DoxyCodeLine{      \_ = moduleManager.prepareDownloadFolders()}
+\DoxyCodeLine{      networkState()}
+\DoxyCodeLine{  \}}
+\end{DoxyCode}
+
+\item 服务端的更新请联系我们的服务端的同事 
+\end{DoxyItemize}\hypertarget{index_autotoc_md8}{}\doxysubsection{1.\+3.\+0版本升级\+:}\label{index_autotoc_md8}
+
+\begin{DoxyItemize}
+\item 1.\+3.\+0版本调整编辑右侧发布和保存按钮到底部，按钮\+U\+I配置的key不变，增加报错多张图片功能。短视频内部将一部分代码转为swift开发，在native的使用上有少部分变化,重点关注shortvideo的回调是否正常触发，通常xcode会自动提示，按提示修改即可，flutter和reactnative没有变化。 
+\end{DoxyItemize}\hypertarget{index_autotoc_md9}{}\doxysubsection{1.\+2.\+9版本升级：}\label{index_autotoc_md9}
+
+\begin{DoxyItemize}
+\item 1.\+2.\+9版本新增了导出带水印的视频和图片，如果用户配置了水印，那么在导出时视频和封面是带水印的。 
+\end{DoxyItemize}\hypertarget{index_autotoc_md10}{}\doxysubsection{1.\+2.\+8版本升级：}\label{index_autotoc_md10}
+
+\begin{DoxyItemize}
+\item 1.\+2.\+7版本进入拍摄、编辑、合拍时需要先下载资源，新版本不会阻塞进入拍摄、编辑、合拍，会在进入的时候后台默默下载。同时也提供了接口用户也可以主动调用，如果用户不主动调用shortvideo将会默认调用。 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/ (void)downloadPrefabricatedMaterialCompletion:(void (\string^\_Nullable)(BOOL isFinish))completionHandler;}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_autotoc_md11}{}\doxysubsection{1.\+2.\+7版本升级：}\label{index_autotoc_md11}
+
+\begin{DoxyItemize}
+\item 原生工程直接替换\+Frameworks库 1.\+2.\+7版本在{\ttfamily start\+Capture\+With\+Present\+View\+Controller} {\ttfamily start\+Dual\+Capture\+With\+Present\+View\+Controller} {\ttfamily start\+Edit\+With\+Present\+View\+Controller}中的block参数中，将原来的void改为了\+B\+O\+O\+L值，使用时请注意，如果你的block传的是nil，升级后不会有变化。如果你传的不是空请注意下面的block参数。 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/ (void)startCaptureWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                       config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                        music:(NvCaptionMusicInfo * \_Nullable)music}
+\DoxyCodeLine{                                         with:(void(\string^)(BOOL isFinish))complatetionHandler;}
+\DoxyCodeLine{-\/ (void)startDualCaptureWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                           config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                             with:(void(\string^)(BOOL isFinish))complatetionHandler;}
+\DoxyCodeLine{-\/ (void)startEditWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                    config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                      with:(void(\string^)(BOOL isFinish))complatetionHandler;}
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{index_autotoc_md12}{}\doxysection{支持媒体格式}\label{index_autotoc_md12}
+详见：\href{https://www.meishesdk.com/ios/doc_ch/html/content/Introduction_8md.html}{\texttt{ 美摄sdk产品概述}}\hypertarget{index_autotoc_md13}{}\doxysection{短视频模块集成}\label{index_autotoc_md13}
+短视频模块下载解压后，以\+Cocoa\+Pods本地私有库的方式使用，解压后文件目录如下：
+
+
+
+
+\begin{DoxyEnumerate}
+\item 创建 Podfile 文件 进入项目所在路径，输入以下命令行之后项目路径下会出现一个 Podfile 文件。
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pod init}
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item 编辑 Podfile 文件, 添加短视频模块依赖 建议使用参数\+: use\+\_\+frameworks!
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{platform :ios, '12.0'}
+\DoxyCodeLine{source 'https://github.com/CocoaPods/Specs.git'}
+\DoxyCodeLine{use\_frameworks!}
+\DoxyCodeLine{}
+\DoxyCodeLine{target 'App' do}
+\DoxyCodeLine{  \# NvShortVideoCore}
+\DoxyCodeLine{  pod 'NvShortVideoEdit',    :path => '../Pods-\/NvShortVideoEdit'}
+\DoxyCodeLine{end}
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item 安装依赖
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pod install}
+\end{DoxyCode}
+
+
+
+\begin{DoxyEnumerate}
+\item copy demo文件 如果你是flutter用户或者reactnative用户这一步你不用关心。如果你是原生工程接入你需要copy demo中的两个文件\+Config.\+swift、\+Nv\+Http\+Request\+Delegate.\+swift到你的工程中，\+Config.\+swift文件是为了配置网络接口url的，你只需要把host改为你自己服务器就行了，\+Nv\+Http\+Request\+Delegate是为了加载第三方库。 之后在你的代码中对\+U\+R\+L进行配置,在当前控制器中调用set\+Web\+Config(),最后就是点击按钮的时候进入shortvideo的拍摄和编辑页面了。 请参考下面代码。 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{...}
+\DoxyCodeLine{var videoConfig: NvVideoConfig?}
+\DoxyCodeLine{let dependencyDelegate = NvHttpRequestDelegate()}
+\DoxyCodeLine{override func viewDidLoad() \{}
+\DoxyCodeLine{    super.viewDidLoad()}
+\DoxyCodeLine{    // Do any additional setup after loading the view.}
+\DoxyCodeLine{    setupModuleManager()}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    //web config}
+\DoxyCodeLine{    setWebConfig()}
+\DoxyCodeLine{    test()}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{private func setWebConfig() \{}
+\DoxyCodeLine{    let moduleManager = NvModuleManager.sharedInstance()}
+\DoxyCodeLine{    // 这里如果你有自己实现HttpRequest类，那么这里你可以创建一个HttpRequest对象实例赋值给moduleManager.netDelegate，并设置好url}
+\DoxyCodeLine{    // Here if you have your own implementation HttpRequest class,}
+\DoxyCodeLine{    // so here you can create an HttpRequest object instance assigned to moduleManager.net Delegate, and set up the url}
+\DoxyCodeLine{    let request = moduleManager.netDelegate as! NvHttpRequest}
+\DoxyCodeLine{    request.dependencyDelegate = dependencyDelegate}
+\DoxyCodeLine{    request.assetRequestUrl = NV\_ASSET\_REQUEST\_URL}
+\DoxyCodeLine{    request.assetCategoryUrl = NV\_ASSET\_CATEGORY\_URL}
+\DoxyCodeLine{    request.assetMusiciansUrl = NV\_ASSET\_MUSICIANS\_URL}
+\DoxyCodeLine{    request.assetFontUrl = NV\_ASSET\_FONT\_URL}
+\DoxyCodeLine{    request.assetDownloadUrl = NV\_ASSET\_DOWNLOAD\_URL}
+\DoxyCodeLine{    request.assetPrefabricatedUrl = NV\_ASSET\_PREFABRICATED\_URL}
+\DoxyCodeLine{    request.assetAutoCutUrl = NV\_ASSET\_AUTOCUT\_URL}
+\DoxyCodeLine{    request.assetTagUrl = NV\_ASSET\_TAG\_URL}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    request.clientId = NV\_ClientId}
+\DoxyCodeLine{    request.clientSecret = NV\_ClientSecret}
+\DoxyCodeLine{    request.assemblyId = NV\_AssemblyId}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    if isCurrentLanguageNoChinese() \{}
+\DoxyCodeLine{        request.isAbroad = 1}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    moduleManager.prepareDownloadFolders()}
+\DoxyCodeLine{    networkState()}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{func isCurrentLanguageNoChinese() -\/> Bool \{}
+\DoxyCodeLine{    guard let language = Locale.preferredLanguages.first else \{}
+\DoxyCodeLine{        return false}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    return !language.hasPrefix("zh")}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{func networkState() \{}
+\DoxyCodeLine{    let monitor = NWPathMonitor()}
+\DoxyCodeLine{    let queue = DispatchQueue(label: "NetworkMonitor")}
+\DoxyCodeLine{    monitor.pathUpdateHandler = \{ path in}
+\DoxyCodeLine{        if path.status == .satisfied \{}
+\DoxyCodeLine{            // 网络可用}
+\DoxyCodeLine{            DispatchQueue.main.async \{}
+\DoxyCodeLine{                let moduleManager = NvModuleManager.sharedInstance()}
+\DoxyCodeLine{                moduleManager.preloadedResource()}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{            monitor.cancel()}
+\DoxyCodeLine{        \} else \{}
+\DoxyCodeLine{            // 网络不可用}
+\DoxyCodeLine{            print("Network not reachable")}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    monitor.start(queue: queue)}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md14}{}\doxysection{系统授权}\label{index_autotoc_md14}
+App 需要在 Info.\+plist 中添加以下权限，否则将无法使用短视频模块。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<\textcolor{keywordtype}{key}>\textcolor{keyword}{NSCameraUsageDescription}</\textcolor{keywordtype}{key}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{string}>\textcolor{keyword}{App需要您的同意},\textcolor{keyword}{才能访问相机}</\textcolor{keywordtype}{string}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{key}>\textcolor{keyword}{NSMicrophoneUsageDescription}</\textcolor{keywordtype}{key}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{string}>\textcolor{keyword}{App需要您的同意},\textcolor{keyword}{才能访问麦克风}</\textcolor{keywordtype}{string}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{key}>\textcolor{keyword}{NSPhotoLibraryUsageDescription}</\textcolor{keywordtype}{key}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{string}>\textcolor{keyword}{App需要您的同意},\textcolor{keyword}{才能访问相册}</\textcolor{keywordtype}{string}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{key}>\textcolor{keyword}{NSAppleMusicUsageDescription}</\textcolor{keywordtype}{key}>}
+\DoxyCodeLine{<\textcolor{keywordtype}{string}>\textcolor{keyword}{App需要您的同意},\textcolor{keyword}{才能访问音乐}</\textcolor{keywordtype}{string}>}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md15}{}\doxysection{美摄\+S\+D\+K授权}\label{index_autotoc_md15}
+美摄\+S\+D\+K授权方法：
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#import <NvStreamingSdkCore/NvsStreamingContext.h>}
+\DoxyCodeLine{}
+\DoxyCodeLine{@interface AppDelegate ()}
+\DoxyCodeLine{@end}
+\DoxyCodeLine{}
+\DoxyCodeLine{@implementation AppDelegate}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/ (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions \{}
+\DoxyCodeLine{    NSString *licPath = [[NSBundle mainBundle] pathForResource:@"meicam\_licence" ofType:@"lic"];}
+\DoxyCodeLine{    BOOL ret = [NvsStreamingContext verifySdkLicenseFile:licPath];}
+\DoxyCodeLine{    if (!ret) \{}
+\DoxyCodeLine{        NSLog(@"verifySdkLicenseFile faild");}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    return YES;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{@end}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{func application(\_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -\/> Bool \{}
+\DoxyCodeLine{    // Override point for customization after application launch.}
+\DoxyCodeLine{    let licPath = Bundle.main.path(forResource: "meishesdk", ofType: "lic")}
+\DoxyCodeLine{    if NvsStreamingContext.verifySdkLicenseFile(licPath) \{}
+\DoxyCodeLine{        print("verifySdkLicenseFile success")}
+\DoxyCodeLine{    \} else \{}
+\DoxyCodeLine{        print("verifySdkLicenseFile failed")}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    return true}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+在\href{https://www.meishesdk.com}{\texttt{ 美摄官网}}注册用户后，创建应用，配置\+Bundle Idenfity，由美摄商务同事开通授权后，可在应用信息中下载授权文件。
+
+需要将授权.\+lic文件添加到\+App工程中
+
+\begin{quote}
+S\+D\+K授权和\+App的\+Bundle Idenfity绑定。未授权时，\+S\+D\+K全功能不再检查授权，都可以使用，绘制的画面会带\+M\+E\+I\+S\+H\+E水印。 \end{quote}
+\hypertarget{index_autotoc_md16}{}\doxysection{网络接口配置}\label{index_autotoc_md16}
+短视频模块用到的滤镜、贴纸、音乐等文件均通过网络接口获取。需要服务端按接口文档实现相应的接口。 在\+App工程中配置服务器地址及公共参数。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{// 参考这个方法配置网络接口}
+\DoxyCodeLine{private func setWebConfig() \{\}}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md17}{}\doxysection{预制素材}\label{index_autotoc_md17}
+短视频模块依赖的素材包可根据需要选择。预制素材详见：\href{./PrefabricatedMaterial_ch.html}{\texttt{ 短视频模块预制素材}} 下载预置素材,如果你调用这个接口后，shortvideo在进入的时候就不会重复调用，如果你不调用，shortvideo在进入的时候就会默认后台调用。 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Download material}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler Completion callback}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 下载素材}
+\DoxyCodeLine{ *  素材类型}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler 完成回调}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ *  */}
+\DoxyCodeLine{-\/ (void)downloadPrefabricatedMaterialCompletion:(void (\string^\_Nullable)(BOOL isFinish))completionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md18}{}\doxysection{短视频模块主要方法}\label{index_autotoc_md18}
+模块主要方法定义在\href{./interface_nv_module_manager.html}{\texttt{ Nv\+Module\+Manager.\+h}}文件中。 调用示例：
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{let moduleManager = NvModuleManager.sharedInstance()}
+\DoxyCodeLine{moduleManager.downloadPrefabricatedMaterialCompletion(nil)}
+\DoxyCodeLine{guard let navigationController = navigationController else \{ return \}}
+\DoxyCodeLine{moduleManager.startCapture(}
+\DoxyCodeLine{    withPresent: navigationController,}
+\DoxyCodeLine{    config: videoConfig,}
+\DoxyCodeLine{    music: nil}
+\DoxyCodeLine{) \{ isFinish in}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{// 引入头文件}
+\DoxyCodeLine{\#import <NvShortVideoCore/NvShortVideoCore.h>}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/ (IBAction)sendertapCapture:(UIButton*)bt \{}
+\DoxyCodeLine{    bt.enabled = NO;}
+\DoxyCodeLine{    NvVideoConfig *config = [[NvVideoConfig alloc] init];}
+\DoxyCodeLine{    NvModuleManager* moduleManager = [NvModuleManager sharedInstance];}
+\DoxyCodeLine{    [moduleManager startCaptureWithPresentViewController:self.navigationController config:config music:nil with:\string^\{}
+\DoxyCodeLine{        bt.enabled = YES;}
+\DoxyCodeLine{    \}];}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md19}{}\doxysubsection{视频录制}\label{index_autotoc_md19}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ /*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Shooting entrance}
+\DoxyCodeLine{ *  \(\backslash\)param viewController Current viewController}
+\DoxyCodeLine{ *  \(\backslash\)param config Configuration item}
+\DoxyCodeLine{ *  \(\backslash\)param music The default is nil，If you need to shoot with music, you need to pass an audio object, and the path of the audio must be local and has been downloaded}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 拍摄入口}
+\DoxyCodeLine{ *  \(\backslash\)param viewController 当前控制器}
+\DoxyCodeLine{ *  \(\backslash\)param config 配置项}
+\DoxyCodeLine{ *  \(\backslash\)param music 默认是nil，如果拍摄时需要带音乐拍摄，需要传递一个音频对象，音频的路径必须是本地的，已经下载的路径}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)startCaptureWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                       config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                        music:(NvCaptionMusicInfo * \_Nullable)music}
+\DoxyCodeLine{                                         with:(void(\string^)(void))complatetionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md20}{}\doxysubsection{合拍}\label{index_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief PIP entrance By default, the album is opened, and a material from the album is taken into the beat}
+\DoxyCodeLine{ *  \(\backslash\)param viewController Current viewController}
+\DoxyCodeLine{ *  \(\backslash\)param config Configuration item}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 合拍入口，默认打开相册，从相册取一个素材进入合拍}
+\DoxyCodeLine{ *  \(\backslash\)param viewController 当前控制器}
+\DoxyCodeLine{ *  \(\backslash\)param config 配置项}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)startDualCaptureWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                           config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                             with:(void(\string^)(void))complatetionHandler;}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief PIP entrance}
+\DoxyCodeLine{ *  \(\backslash\)param viewController Current viewController}
+\DoxyCodeLine{ *  \(\backslash\)param config Configuration item}
+\DoxyCodeLine{ *  \(\backslash\)param videoPath The video path to be filmed must be a local path}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 合拍入口}
+\DoxyCodeLine{ *  \(\backslash\)param viewController 当前控制器}
+\DoxyCodeLine{ *  \(\backslash\)param config 配置项}
+\DoxyCodeLine{ *  \(\backslash\)param videoPath 准备合拍的视频路径，必须是本地路径}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)startDualCaptureWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                           config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                        videoPath:(NSString *)videoPath}
+\DoxyCodeLine{                                             with:(void(\string^)(void))complatetionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md21}{}\doxysubsection{视频编辑}\label{index_autotoc_md21}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Edit entrance}
+\DoxyCodeLine{ *  \(\backslash\)param viewController Current viewController}
+\DoxyCodeLine{ *  \(\backslash\)param config Configuration item}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 编辑入口}
+\DoxyCodeLine{ *  \(\backslash\)param viewController 当前控制器}
+\DoxyCodeLine{ *  \(\backslash\)param config 配置项}
+\DoxyCodeLine{ *  \(\backslash\)param complatetionHandler}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)startEditWithPresentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{                                    config:(NvVideoConfig * \_Nullable)config}
+\DoxyCodeLine{                                      with:(void(\string^)(void))complatetionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md22}{}\doxysubsection{视频编辑完成回调}\label{index_autotoc_md22}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*!}
+\DoxyCodeLine{ * \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Edit complete, ready to enter publish callback}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 编辑完成，准备进入发布回调}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{@protocol NvModuleManagerDelegate <NSObject>}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*!}
+\DoxyCodeLine{ * \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Edit complete, jump release callback}
+\DoxyCodeLine{ *  @param taskId  Edit the event id used to exit the module}
+\DoxyCodeLine{ *  @param coverImagePath cover}
+\DoxyCodeLine{ *  @param hasDraft Whether there is a draft button}
+\DoxyCodeLine{ *  @param draftInfo The title displayed on the publish page}
+\DoxyCodeLine{ *  @param videoEditNavigationController Current nav controller}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 编辑完成，跳转发布回调}
+\DoxyCodeLine{ *  @param taskId 编辑事件id，用于退出模块}
+\DoxyCodeLine{ *  @param coverImagePath 封面图}
+\DoxyCodeLine{ *  @param hasDraft 是否有草稿按钮}
+\DoxyCodeLine{ *  @param draftInfo 发布页显示的标题}
+\DoxyCodeLine{ *  @param videoEditNavigationController 当前nav控制器}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ *  \(\backslash\)sa exitVideoEdit:}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)publishWithTaskId:(NSString *)taskId}
+\DoxyCodeLine{           coverImagePath:(NSString *)coverImagePath}
+\DoxyCodeLine{                 hasDraft:(BOOL)hasDraft}
+\DoxyCodeLine{                draftInfo:(NSString *\_Nullable)draftInfo}
+\DoxyCodeLine{videoEditNavigationController:(UINavigationController *)videoEditNavigationController;}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{@end}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md23}{}\doxysubsection{选择封面}\label{index_autotoc_md23}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Save the cover image to the album}
+\DoxyCodeLine{ *  \(\backslash\)param coverPath Current cover map path}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler}
+\DoxyCodeLine{ *  \(\backslash\)warning Publish page Save picture button, click after the call}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 保存封面图到相册}
+\DoxyCodeLine{ *  \(\backslash\)param coverPath 当前封面图路径}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler}
+\DoxyCodeLine{ *  \(\backslash\)warning 发布页保存图片按钮，点击之后调用}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)saveCover:(NSString *)coverPath with:(nullable void(\string^)(BOOL success))completionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md24}{}\doxysubsection{保存草稿}\label{index_autotoc_md24}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Save draft}
+\DoxyCodeLine{ *  \(\backslash\)param infoString The text of the currently saved publication page}
+\DoxyCodeLine{ *  \(\backslash\)warning Publish page Save draft button, called after clicking}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 保存草稿}
+\DoxyCodeLine{ *  \(\backslash\)param infoString 当前保存的发布页文本}
+\DoxyCodeLine{ *  \(\backslash\)warning 发布页保存草稿按钮，点击之后调用}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (BOOL)saveCurrentDraftWithDraftInfo:(NSString *\_Nullable)infoString;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md25}{}\doxysubsection{合成视频}\label{index_autotoc_md25}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Start exporting video}
+\DoxyCodeLine{ *  \(\backslash\)param configure Default is nil, no need to pass}
+\DoxyCodeLine{ *  \(\backslash\)warning Publish page Save video button, click after the call}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 开始导出视频}
+\DoxyCodeLine{ *  \(\backslash\)param configure 默认是nil，不需要传}
+\DoxyCodeLine{ *  \(\backslash\)warning 发布页保存视频按钮，点击之后调用}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (BOOL)compileCurrentTimeline:(NSDictionary *\_Nullable)configure;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md26}{}\doxysubsection{视频合成回调}\label{index_autotoc_md26}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief sdk video export callback}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief sdk视频导出回调}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{@protocol NvModuleManagerCompileStateDelegate <NSObject>}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief compile video progress callback}
+\DoxyCodeLine{ *  \(\backslash\)param progress  the current progress}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 合成视频进度回调}
+\DoxyCodeLine{ *  \(\backslash\)param progress 当前的进度}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)didCompileFloatProgress:(float)progress;}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief The resultant video completes the callback}
+\DoxyCodeLine{ *  \(\backslash\)param outputPath Video output file path}
+\DoxyCodeLine{ *  \(\backslash\)param error error}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 合成视频完成回调}
+\DoxyCodeLine{ *  \(\backslash\)param outputPath 视频输出的文件路径}
+\DoxyCodeLine{ *  \(\backslash\)param error 错误信息}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)didCompileCompleted:(NSString *\_Nullable)outputPath error:(NSError *\_Nullable)error;}
+\DoxyCodeLine{}
+\DoxyCodeLine{@end}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md27}{}\doxysubsection{保存视频}\label{index_autotoc_md27}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Save the video to the album}
+\DoxyCodeLine{ *  \(\backslash\)param coverPath Current video path}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 保存视频到相册}
+\DoxyCodeLine{ *  \(\backslash\)param coverPath 当前视频路径}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)saveVideo:(NSString *)videoPath with:(nullable void(\string^)(BOOL success))completionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md28}{}\doxysubsection{保存封面图片}\label{index_autotoc_md28}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Save the cover image to the album}
+\DoxyCodeLine{ *  \(\backslash\)param coverPath Current cover map path}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler}
+\DoxyCodeLine{ *  \(\backslash\)warning Publish page Save picture button, click after the call}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 保存封面图到相册}
+\DoxyCodeLine{ *  \(\backslash\)param coverPath 当前封面图路径}
+\DoxyCodeLine{ *  \(\backslash\)param completionHandler}
+\DoxyCodeLine{ *  \(\backslash\)warning 发布页保存图片按钮，点击之后调用}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)saveCover:(NSString *)coverPath with:(nullable void(\string^)(BOOL success))completionHandler;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md29}{}\doxysubsection{获取当前选择的素材路径}\label{index_autotoc_md29}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Get a list of all currently selected materials}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 获取当前所选所有素材列表}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (NSMutableArray *)getAVFileInfoArray;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md30}{}\doxysubsection{获取素材的信息}\label{index_autotoc_md30}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Get material information}
+\DoxyCodeLine{ *  \(\backslash\)param path material path}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 获取素材信息}
+\DoxyCodeLine{ *  \(\backslash\)param path 素材路径}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (NvsAVFileInfo*)getAVFileInfo:(NSString *)path;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md31}{}\doxysubsection{退出短视频模块}\label{index_autotoc_md31}
+视频发布页退出时调用
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Exit the entire publisher call}
+\DoxyCodeLine{ *  \(\backslash\)param taskId Returned by the edit completion callback}
+\DoxyCodeLine{ *  \(\backslash\)warning This method will clean up the current draft and SDK-\/held resources, please call after completely exiting the editing and publishing process}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 退出整个发布器调用}
+\DoxyCodeLine{ *  \(\backslash\)param taskId 由编辑完成回调中返回}
+\DoxyCodeLine{ *  \(\backslash\)warning 该方法会清理当前草稿以及sdk持有资源，请在完全退出编辑发布流程之后，调用}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (BOOL)exitVideoEdit:(NSString *)taskId;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md32}{}\doxysubsection{获取草稿列表}\label{index_autotoc_md32}
+方法定义在\href{./interface_nv_draft_manager.html}{\texttt{ Nv\+Draft\+Model.\+h}}中
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Gets all drafts saved in the sandbox}
+\DoxyCodeLine{ *  \(\backslash\)return draft list}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 获取沙盒中保存的所有草稿}
+\DoxyCodeLine{ *  \(\backslash\)return 草稿列表}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{+ (NSMutableArray<NvDraftModel *> *)getUserDraftFileArray;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md33}{}\doxysubsection{删除草稿}\label{index_autotoc_md33}
+方法定义在\href{./interface_nv_draft_manager.html}{\texttt{ Nv\+Draft\+Model.\+h}}中
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Delete a draft file}
+\DoxyCodeLine{ *  \(\backslash\)param model draft}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 删除某个草稿文件}
+\DoxyCodeLine{ *  \(\backslash\)param model draft}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{+ (void)deleteDraftFile:(NvDraftModel *)model;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md34}{}\doxysubsection{打开草稿}\label{index_autotoc_md34}
+方法定义在\href{./interface_nv_module_manager.html}{\texttt{ Nv\+Module\+Manager.\+h}}中
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*! \(\backslash\)if ENGLISH}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief Enter the editing portal through draft data recovery}
+\DoxyCodeLine{ *  \(\backslash\)param draft Current draft object}
+\DoxyCodeLine{ *  \(\backslash\)param viewController Current viewController}
+\DoxyCodeLine{ *  \(\backslash\)param config Configuration item}
+\DoxyCodeLine{ *  \(\backslash\)else}
+\DoxyCodeLine{ *}
+\DoxyCodeLine{ *  \(\backslash\)brief 通过草稿数据恢复，进入编辑入口}
+\DoxyCodeLine{ *  \(\backslash\)param draft 当前草稿对象}
+\DoxyCodeLine{ *  \(\backslash\)param viewController 当前控制器}
+\DoxyCodeLine{ *  \(\backslash\)param config 配置项}
+\DoxyCodeLine{ *  \(\backslash\)endif}
+\DoxyCodeLine{ */}
+\DoxyCodeLine{-\/ (void)reeditDraft:(NvDraftModel *)draft presentViewController:(UIViewController *)viewController}
+\DoxyCodeLine{             config:(NvVideoConfig * \_Nullable)config;}
+\end{DoxyCode}
+\hypertarget{index_autotoc_md35}{}\doxysection{模块设置}\label{index_autotoc_md35}
+短视频模块设置类\+Nv\+Video\+Config，包含功能模块设置、\+U\+I定制。详见：\href{functionConfiguration_ch.html}{\texttt{ 短视频功能模块设置}}、\href{UIConfiguration_ch.html}{\texttt{ 短视频\+U\+I模块设置}}\hypertarget{index_autotoc_md36}{}\doxysection{开发者合规指南}\label{index_autotoc_md36}
+\href{https://www.meishesdk.com/compliance-guide/}{\texttt{ 开发者合规指南}} 

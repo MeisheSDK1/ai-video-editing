@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  NvShortVideo
+
+  Created by chengww on 2022/1/4.
+  
+*/
+CFBundleDisplayName="Flap";
+NSCameraUsageDescription = "If you don't allow it, you won't be able to take a video or photo in the photo.";
+NSMicrophoneUsageDescription = "If you don't allow it, you won't be able to take a video with sound in the photo, or record it, or add a voice to the produced video.";
+NSPhotoLibraryUsageDescription = "If you don't allow it, you won't be able to store photos taken or made, or import your own photos or videos to Flap.";
+NSPhotoLibraryAddUsageDescription = "If you don't allow it, you won't be able to store photos taken or made, or import your own photos or videos to Flap.";
+NSAppleMusicUsageDescription = "If you don't allow it, you won't be able to import your own music in the photo, as the background music for the video.";

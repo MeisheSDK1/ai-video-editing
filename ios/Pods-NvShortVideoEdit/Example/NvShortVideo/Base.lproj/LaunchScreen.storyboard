@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HT2-yE-0Qj"/>
+                        <viewControllerLayoutGuide type="bottom" id="7b1-q5-uTj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homepage_logo" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-tf-xKR">
+                                <rect key="frame" x="82" y="423" width="50" height="50"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEISHE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-Jh-vms">
+                                <rect key="frame" x="140" y="431" width="113.5" height="34"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="29.5"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ov8-Oi-PrC">
+                                <rect key="frame" x="261.5" y="431" width="62.5" height="34"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="29.5"/>
+                                <color key="textColor" red="0.7569199204" green="0.75299257040000001" blue="0.78737109900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13909247520000001" green="0.1433881223" blue="0.1591101587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="SHc-tf-xKR" firstAttribute="centerY" secondItem="9B0-Jh-vms" secondAttribute="centerY" id="5Ox-34-wzY"/>
+                            <constraint firstItem="9B0-Jh-vms" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" multiplier="0.95/1" id="Dgn-fy-1aY"/>
+                            <constraint firstItem="9B0-Jh-vms" firstAttribute="leading" secondItem="SHc-tf-xKR" secondAttribute="trailing" constant="8" id="FPe-g5-4oT"/>
+                            <constraint firstItem="Ov8-Oi-PrC" firstAttribute="leading" secondItem="9B0-Jh-vms" secondAttribute="trailing" constant="8" id="Jcn-10-MEh"/>
+                            <constraint firstItem="Ov8-Oi-PrC" firstAttribute="centerY" secondItem="9B0-Jh-vms" secondAttribute="centerY" id="hpZ-f6-JDx"/>
+                            <constraint firstItem="9B0-Jh-vms" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="toW-x7-j8W"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="homepage_logo" width="50" height="50"/>
+    </resources>
+</document>

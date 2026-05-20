@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">拍动</string>
+    <string name="new_material">素材上新</string>
+    <string name="selected_function">请选择所需的功能</string>
+    <string name="function_list">功能列表</string>
+    <string name="edit">编辑</string>
+    <string name="capture">拍摄</string>
+    <string name="co_capture">合拍</string>
+    <string name="co_drafts">草稿</string>
+    <string name="ms_shot_video">拍动 </string>
+    <string name="no_permission">缺少必要权限，请到设置页面开启！</string>
+</resources>

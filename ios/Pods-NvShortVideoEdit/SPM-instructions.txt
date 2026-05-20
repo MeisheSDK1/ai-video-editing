@@ -1,0 +1,9 @@
+The demo project uses the CocoaPods method by default. If you want to use SPM (Swift Package Manager), please add the folder containing the current Package.swift file to the demo project Package Dependencies.  Additionally, you will need to include the SDWebImage and SSZipArchive libraries.
+
+Package Dependencies location
+../../Pods-NvShortVideoEdit
+https://github.com/SDWebImage/SDWebImageWebPCoder.git
+https://github.com/ZipArchive/ZipArchive.git
+
+
+demo 默认使用pod方式引入，如果想使用SPM引入，请将当前Package.swift所在的文件夹加入到demo工程的Package Dependencies中，另外还需要引入SDWebImage和SSZipArchive库。

@@ -1,0 +1,49 @@
+ext {
+    dependencies = [
+            //android
+            extAndroidTestRunner : 'androidx.test.ext:junit:1.1.1',
+            extTestJunit         : 'junit:junit:4.12',
+            extTestEspresso      : 'androidx.test.espresso:espresso-core:3.2.0',
+            extSwiperefreshlayout: 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0',
+            extAndroidMultidex   : 'androidx.multidex:multidex:2.0.0',
+            extConstraintLayout  : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            extAppcompat         : 'androidx.appcompat:appcompat:1.0.0',
+            extAnnotation        : 'androidx.annotation:annotation:1.1.0',
+            extAppcompatRecycler : 'androidx.recyclerview:recyclerview:1.1.0',
+            extAndroidXDesign    : 'com.google.android.material:material:1.0.0',
+            extMutilDex          : 'androidx.multidex:multidex:2.0.0',
+            //android
+            extRxJava            : 'io.reactivex.rxjava2:rxjava:2.2.10',
+            extRxAndroid         : 'io.reactivex.rxjava2:rxandroid:2.1.1',
+            //https://square.github.io/retrofit/
+            extRetrofit          : 'com.squareup.retrofit2:retrofit:2.6.2',
+            extRetrofit_Gson     : 'com.squareup.retrofit2:converter-gson:2.6.2',
+            extRetrofit_Adapter  : 'com.squareup.retrofit2:adapter-rxjava2:2.6.2',
+            extOkhttp_log        : 'com.squareup.okhttp3:logging-interceptor:4.9.2',
+            //gson
+            extGoogleGson        : 'com.google.code.gson:gson:2.8.5',
+            //Smart refresh
+            smartRefreshLayout   : 'com.scwang.smart:refresh-layout-kernel:2.0.1',
+            smartRefreshHeader   : 'com.scwang.smart:refresh-header-classics:2.0.1',
+            //网络库
+            extOkhttp            : 'com.squareup.okhttp3:okhttp:4.9.2',
+            // 数据库
+            room                 : 'androidx.room:room-runtime:2.2.5',
+            roomComplier         : 'androidx.room:room-compiler:2.2.5',
+            //图片加载库
+            extBumptechGlide     : 'com.github.bumptech.glide:glide:4.16.0',
+            extGlideAnnotation   : 'com.github.bumptech.glide:compiler:4.16.0',
+            extWebpdecoder       : 'com.github.zjupure:webpdecoder:2.7.4.16.0',
+            //exoplayer
+            exoplayer            : 'androidx.media3:media3-exoplayer:1.1.1',
+            exoplayerUI            : 'androidx.media3:media3-ui:1.1.1',
+            //permission x
+            permissionx          : 'com.permissionx.guolindev:permission-support:1.4.0',
+            //BRVAH
+            brvah                : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50',
+            //Utils
+            utils                : 'com.blankj:utilcode:1.30.6',
+            eventBus             : 'org.greenrobot:eventbus:3.2.0'
+    ]
+
+}

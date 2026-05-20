@@ -1,0 +1,680 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>美摄短视频: 美摄短视频模块接入指引</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">美摄短视频
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">美摄短视频模块接入指引 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__Users_mac-mini_msshortvideo_doc_markdown_native_quickstart_doc_ch_quickstart_android_ch"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+开发环境要求</h1>
+<ul>
+<li>Android studio 2023.12+。</li>
+<li>JDK 11， TargetSdkVersion 34</li>
+</ul>
+<blockquote class="doxtable">
+<p>⚠️ <b>Note:</b> 需要在真机上运行，模拟器暂不支持 </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md2"></a>
+升级短视频注意事项</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+1.5.1版本升级:</h2>
+<ul>
+<li>修复了一些已知问题 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+1.5.0版本升级:</h2>
+<ul>
+<li>此版本更新较大，上线之前一定要进行回归测试，尤其是配置项的变化 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+1.4.0版本升级:</h2>
+<ul>
+<li>安卓的一键成片没有升级，所以安卓的接口没有变化，不需要改动。这一点要和ios区分开。有需要对接一键成片的，请在群里联系我们的相关同事 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+1.3.0版本升级:</h2>
+<ul>
+<li>1.编辑**UI**更新：调整下一步，保存位置为底部菜单。</li>
+<li>2.新增导出美摄sdk配置项；支持的配置参数详见：<a href="https://www.meishesdk.com/android/doc_ch/html/content/classcom_1_1meicam_1_1sdk_1_1NvsStreamingContext.html#COMPILE_CONFIGURATIONS">美摄sdk生成配置项参数</a> <div class="fragment"><div class="line"><span class="keyword">private</span> <span class="keywordtype">void</span> testCompileConfig() {</div>
+<div class="line">        mVideoConfig = NvModuleManager.get().getConfig();</div>
+<div class="line">        <span class="keywordflow">if</span> (<span class="keyword">null</span> == mVideoConfig) {</div>
+<div class="line">            mVideoConfig = <span class="keyword">new</span> NvVideoConfig();</div>
+<div class="line">        }</div>
+<div class="line">        NvCompileConfig compileConfig = mVideoConfig.getCompileConfig();</div>
+<div class="line">        Map&lt;String, Object&gt; compileMap = <span class="keyword">new</span> HashMap&lt;&gt;();</div>
+<div class="line">        compileMap.put(VIDEO_ENCODEC_NAME, <span class="stringliteral">&quot;hevc&quot;</span>);</div>
+<div class="line">        compileConfig.setConfigure(compileMap);</div>
+<div class="line"><span class="comment">//        compileConfig.setFps(30);</span></div>
+<div class="line">        mVideoConfig.setCompileConfig(compileConfig);</div>
+<div class="line">    }</div>
+</div><!-- fragment --></li>
+<li>3.新增导出时支持多张图片保存，支持获取发布数据：**视频路径，图片路径，musicInfo数据**。 <div class="fragment"><div class="line">NvPublishInfo publishInfo = NvModuleManager.get().getPublishInfo();</div>
+<div class="line">    <span class="comment">// 单张图片路径</span></div>
+<div class="line">    String coverPath = publishInfo.getCoverPath();</div>
+<div class="line">    <span class="comment">// 音乐信息</span></div>
+<div class="line">    NvMusicInfo musicInfo = publishInfo.getMusicInfo();</div>
+<div class="line">    <span class="comment">// 多张图片路径集合</span></div>
+<div class="line">    List&lt;String&gt; imagesPath = publishInfo.getImagesPath();</div>
+<div class="line">    <span class="comment">// 视频路径</span></div>
+<div class="line">    String videoPath = publishInfo.getVideoPath();</div>
+</div><!-- fragment --></li>
+<li>4.新增Api，用于获取是否支持多张图片保存。 <div class="fragment"><div class="line"><span class="keywordtype">boolean</span> onlyHaveMultipleImage = NvModuleManager.get().isOnlyHaveMultipleImage();</div>
+</div><!-- fragment --></li>
+<li>5.新增拍摄配置项：默认选择项**拍照，视频，快拍**。 <div class="fragment"><div class="line"><span class="keyword">private</span> <span class="keywordtype">void</span> testCaptureConfig() {</div>
+<div class="line">    mVideoConfig = NvModuleManager.get().getConfig();</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">null</span> == mVideoConfig) {</div>
+<div class="line">        mVideoConfig = <span class="keyword">new</span> NvVideoConfig();</div>
+<div class="line">    }</div>
+<div class="line">    NvCaptureConfig captureConfig = mVideoConfig.getCaptureConfig();</div>
+<div class="line">    <span class="comment">// NvCaptureBottomMenuItem.image</span></div>
+<div class="line">    <span class="comment">// NvCaptureBottomMenuItem.video</span></div>
+<div class="line">    <span class="comment">// NvCaptureBottomMenuItem.smart</span></div>
+<div class="line">    captureConfig.setDefaultBottomMenuSelectItem(NvCaptureConfig.NvCaptureBottomMenuItem.video);</div>
+<div class="line">    mVideoConfig.setCaptureConfig(captureConfig);</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li>6.新增拍摄，编辑添加支持菜单文字修改阴影配置。 <div class="fragment"><div class="line"><span class="keyword">private</span> <span class="keywordtype">void</span> testShadowLayer() {</div>
+<div class="line">    mVideoConfig = NvModuleManager.get().getConfig();</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">null</span> == mVideoConfig) {</div>
+<div class="line">        mVideoConfig = <span class="keyword">new</span> NvVideoConfig();</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// 设置阴影颜色</span></div>
+<div class="line">    mVideoConfig.setShadowColor(<span class="stringliteral">&quot;#FC3E5A&quot;</span>);</div>
+<div class="line">    <span class="comment">// 设置阴影偏移量</span></div>
+<div class="line">    NvShadowOffsetConfig nvShadowOffsetConfig = <span class="keyword">new</span> NvShadowOffsetConfig(0, 1);</div>
+<div class="line">    mVideoConfig.setShadowOffset(nvShadowOffsetConfig);</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li>7.fix 特定环境下出现的拍摄滤镜底部弹窗出现的UI错乱问题。</li>
+<li>8.优化 检查相册中数据是否真实存在，如果不存在则提示视频｜照片不存在</li>
+<li>9.优化 编辑滑动底部进度条时，隐藏所有操作菜单项。</li>
+<li>10.Android适配16k。</li>
+<li>11.接口更新： <b>NvModuleManager.java</b> 统一了导出数据的获取接口。 <div class="fragment"><div class="line"> <span class="comment">// public interface OnCompileImageListener {</span></div>
+<div class="line"> <span class="comment">//     void onCompileFinished(boolean isSuccess, String path);</span></div>
+<div class="line"> <span class="comment">// }</span></div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">interface </span>OnCompileImageListener {</div>
+<div class="line">     <span class="keywordtype">void</span> onCompileFinished(<span class="keywordtype">boolean</span> isSuccess);</div>
+<div class="line"> }</div>
+<div class="line"> <span class="comment">// path 统一从NvPublishInfo获取</span></div>
+<div class="line"> NvModuleManager.get().getPublishInfo();</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+1.2.9版本升级：</h2>
+<ul>
+<li>1.2.9版本新增了导出带水印的视频和图片，如果用户配置了水印，那么在导出时视频和封面是带水印的。 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+1.2.8版本升级：</h2>
+<ul>
+<li>1.2.7版本进入拍摄、编辑、合拍时需要先下载资源，新版本不会阻塞进入拍摄、编辑、合拍，会在进入的时候后台默默下载。同时也提供了接口用户也可以主动调用，如果用户不主动调用shortvideo将会默认调用。 <div class="fragment"><div class="line"><span class="keyword">public</span> <span class="keywordtype">void</span> downloadPrefabricatedMaterial(Activity activity, OnAssetsRequestListener onAssetsRequestListener)</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+1.2.7版本升级：</h2>
+<ul>
+<li>原生工程直接替换AAR库 1.2.7版本在进入拍摄、合拍、剪辑功能时，在原有接口基础上增加回调，用来监听内置资源下载完成 <div class="fragment"><div class="line">{NvModuleManager.java} </div>
+<div class="line">//拍摄入口</div>
+<div class="line">- public void openCapture(Activity activity, NvVideoConfig videoConfig, NvMusicInfo musicInfo, OnAssetsRequestListener onAssetsRequestListener);</div>
+<div class="line">//合拍入口</div>
+<div class="line">- public void startDualCapture(Activity activity, NvVideoConfig videoConfig, OnAssetsRequestListener onAssetsRequestListener);</div>
+<div class="line">//剪辑入口</div>
+<div class="line">- public void openEdit(Activity activity, NvVideoConfig videoConfig, OnAssetsRequestListener onAssetsRequestListener);</div>
+</div><!-- fragment --></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
+支持媒体格式</h1>
+<p>详见：<a href="https://www.meishesdk.com/android/doc_ch/html/content/Introduction_8md.html">美摄sdk产品概述</a></p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+工程构建</h1>
+<ol type="1">
+<li><p class="startli">新建Android 工程</p>
+<p class="startli">运行File—new—New Project， 进行如下设置后，点击finish</p>
+<p class="startli"><img src="../assets/android_image/image-20240516153236811.png" alt="image-20240516153236811" class="inline"/></p>
+</li>
+<li><p class="startli">将aar包到libs目录下</p>
+<p class="startli">将NvShortVideoCore. aar包，放到libs目录下</p>
+</li>
+<li><p class="startli">将meishesdk.lic 放asset目录下</p>
+<p class="startli"><img src="../assets/android_image/image-20240516185729759.png" alt="image-20240516185729759" class="inline"/></p>
+</li>
+</ol>
+<blockquote class="doxtable">
+<p>meishesdk.lic 是通过美摄官网申请的license，该license和appid绑定</p>
+<p>在<a href="https://www.meishesdk.com">美摄官网</a>注册用户后，创建应用，配置appid，由美摄商务同事开通授权后，可在应用信息中下载授权文件。</p>
+<p>SDK授权和App的appld绑定。未授权时，SDK全功能不再检查授权，都可以使用，绘制的画面会带MEISHE水印。 </p>
+</blockquote>
+<ol type="1">
+<li>创建依赖项</li>
+</ol>
+<div class="fragment"><div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extMutilDex</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extAndroidXDesign</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extAppcompat</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extAppcompatRecycler</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extConstraintLayout</span></div>
+<div class="line">//<span class="keyword">Gson</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extGoogleGson</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extWebpdecoder</span></div>
+<div class="line">//<span class="keyword">Utils</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.utils</span></div>
+<div class="line">//<span class="keyword">BRVAH</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.brvah</span></div>
+<div class="line">// <span class="keyword">glide</span> 4.6.1~4.9.0 (<span class="keyword">exclude</span> <span class="keyword">broken</span> <span class="keyword">version</span> 4.6.0, 4.7.0)</div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extBumptechGlide</span></div>
+<div class="line"><span class="keyword">annotationProcessor</span> <span class="keyword">rootProject.ext.dependencies.extGlideAnnotation</span></div>
+<div class="line">//<span class="keyword">permission</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.permissionx</span></div>
+<div class="line">//<span class="keyword">Smart</span> <span class="keyword">refresh</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.smartRefreshLayout</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.smartRefreshHeader</span></div>
+<div class="line">//<span class="keyword">room</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.room</span></div>
+<div class="line"><span class="keyword">annotationProcessor</span> <span class="keyword">rootProject.ext.dependencies.roomComplier</span></div>
+<div class="line">//<span class="keyword">okhttp</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.extOkhttp</span></div>
+<div class="line">//<span class="keyword">exoplayer</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.exoplayer</span></div>
+<div class="line">//<span class="keyword">eventBus</span></div>
+<div class="line"><span class="keyword">implementation</span> <span class="keyword">rootProject.ext.dependencies.eventBus</span></div>
+</div><!-- fragment --><p>依赖项见 config.gradle 配置</p>
+<h2><a class="anchor" id="autotoc_md12"></a>
+系统权限说明</h2>
+<p>App 需要在以下权限，否则将无法使用短视频模块。</p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.CAMERA&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.RECORD_AUDIO&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</span> /&gt; <span class="comment">&lt;!-- &lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt; --&gt;</span></div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.INTERNET&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.VIBRATE&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.WAKE_LOCK&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.ACCESS_NOTIFICATION_POLICY&quot;</span> /&gt; <span class="comment">&lt;!-- &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt; --&gt;</span></div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.ACCESS_WIFI_STATE&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.CHANGE_WIFI_STATE&quot;</span> /&gt; <span class="comment">&lt;!-- 用于进行网络定位 --&gt;</span></div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.ACCESS_COARSE_LOCATION&quot;</span> /&gt; <span class="comment">&lt;!-- 用于访问GPS定位 --&gt;</span></div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.ACCESS_FINE_LOCATION&quot;</span> /&gt; <span class="comment">&lt;!-- 用于读取手机当前的状态 --&gt;</span></div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.REQUEST_INSTALL_PACKAGES&quot;</span> /&gt;</div>
+<div class="line">   &lt;<span class="keywordtype">uses-permission</span> <span class="keyword">android:name</span>=<span class="stringliteral">&quot;android.permission.EXPAND_STATUS_BAR&quot;</span> /&gt;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+美摄SDK授权</h2>
+<p>在<a href="https://www.meishesdk.com">美摄官网</a>注册用户后，创建应用，配置appid，由美摄商务同事开通授权后，可在应用信息中下载授权文件。</p>
+<p>需要将授权.lic文件添加到App工程的asset目录下</p>
+<div class="fragment"><div class="line">执行NvModuleManager.initSdk(<span class="stringliteral">&quot;assets:/meishesdk.lic&quot;</span>) 方法，进行sdk授权</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>SDK授权和App的appld绑定。未授权时，SDK全功能不再检查授权，都可以使用，绘制的画面会带MEISHE水印。 </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md14"></a>
+网络接口配置</h2>
+<p>短视频模块用到的滤镜、贴纸、音乐等文件均通过网络接口获取。通过设置host的形式配置</p>
+<p>定义在NvsServerClient.java 文件中</p>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Init net host</div>
+<div class="line">     *  \param application The application</div>
+<div class="line">     *  \param host the host</div>
+<div class="line">     *  \param complatetionHandler</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 初始化网路</div>
+<div class="line">     *  \param application app</div>
+<div class="line">     *  \param host host</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public void initConfig(Application application, String host)</div>
+</div><!-- fragment --><p>在EngineNetApi.java 里，定义了各种功能接口，可以修改以下变量，进行功能接口配置</p>
+<div class="fragment"><div class="line"> </div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_REQUEST_URL = <span class="stringliteral">&quot;materialcenter/mall/custom/listAllAssemblyMaterial&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_CATEGORY_URL = <span class="stringliteral">&quot;materialcenter/appSdkApi/listTypeAndCategory&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_FONT_URL = <span class="stringliteral">&quot;materialcenter/listFont&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_MUSICIANS_URL = <span class="stringliteral">&quot;materialcenter/appSdkApi/listMusic&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_DOWNLOAD_URL = <span class="stringliteral">&quot;materialcenter/mall/custom/materialInteraction&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_PREFABRICATED_URL = <span class="stringliteral">&quot;materialcenter/beautyAssets/latest&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_AUTOCUT_URL = <span class="stringliteral">&quot;materialcenter/recommend/listTemplate&quot;</span>;</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String NV_ASSET_TAG_URL = <span class="stringliteral">&quot;materialcenter/listTemplateTag&quot;</span>;</div>
+<div class="line">    NvsServerClient.MallInfo.CLIENT_ID = NV_ClientId;</div>
+<div class="line">    NvsServerClient.MallInfo.CLIENT_SECRET = NV_ClientSecret;</div>
+<div class="line">    NvsServerClient.MallInfo.ASSEMBLY_ID = NV_AssemblyId;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+预制素材</h2>
+<p>短视频模块依赖的素材包可根据需要选择。预制素材详见：<a href="./PrefabricatedMaterial_ch.html">短视频模块预制素材</a></p>
+<h2><a class="anchor" id="autotoc_md16"></a>
+短视频模块主要方法</h2>
+<p>模块方法主要定义在NvModuleManager.java 文件中</p>
+<h3><a class="anchor" id="autotoc_md17"></a>
+初始化sdk</h3>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief InitSdk</div>
+<div class="line">    *  @param licPath the licPath</div>
+<div class="line">    *  \else</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief 美摄SDK授权</div>
+<div class="line">    *  @param licPath 授权文件</div>
+<div class="line">    *  \endif</div>
+<div class="line">    */</div>
+<div class="line">   public void initSdk(String licPath)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md18"></a>
+视频录制</h3>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Open capture</div>
+<div class="line">     *  @param activity the activity</div>
+<div class="line">     *  @param videoConfig the config information</div>
+<div class="line">     *  @param musicInfo the config music information</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 打开拍摄</div>
+<div class="line">     *  @param activity 授权文件</div>
+<div class="line">     *  @param videoConfig 配置信息</div>
+<div class="line">     *  @param musicInfo 音乐信息</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public void openCapture(Activity activity, NvVideoConfig videoConfig, NvMusicInfo musicInfo)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md19"></a>
+合拍</h3>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Open dual capture.Open the album, and jump to the dual capture activity.</div>
+<div class="line">     *  @param activity the activity</div>
+<div class="line">     *  @param videoConfig the config information</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 打开合拍 即跳转相册，进入合拍页面</div>
+<div class="line">     *  @param activity activity</div>
+<div class="line">     *  @param videoConfig 配置信息</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public void openDualCapture(Activity activity, NvVideoConfig videoConfig)</div>
+<div class="line"> </div>
+<div class="line"> /** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Open dual capture.Open the album, and jump to the dual capture activity.</div>
+<div class="line">     *  @param activity the activity.</div>
+<div class="line">     * If you need to configure the export path, you need to call this method</div>
+<div class="line">     *  @param videoConfig the config information</div>
+<div class="line">     *  @param videoPath The video path prepared for co production must be a local path.</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 打开合 拍即跳转相册，进入合拍页面</div>
+<div class="line">     *  如果需要配置导出路径，需要调用此方法</div>
+<div class="line">     *  @param activity 授权文件</div>
+<div class="line">     *  @param videoConfig 配置信息</div>
+<div class="line">     *  @param videoPath 准备合拍的视频路径，必须是本地路径</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public void openDualCapture(Activity activity, NvVideoConfig videoConfig, String videoPath)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md20"></a>
+视频编辑</h3>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Open edit</div>
+<div class="line">     *  @param activity the activity</div>
+<div class="line">     *  @param videoConfig the config information</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 打开编辑</div>
+<div class="line">     *  @param activity activity</div>
+<div class="line">     *  @param videoConfig 配置信息</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">public void openEdit(Activity activity, NvVideoConfig videoConfig)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md21"></a>
+跳转发布页回调</h3>
+<div class="fragment"><div class="line">public interface NvModuleManagerCallback {</div>
+<div class="line"> </div>
+<div class="line">    /** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Publish with info callback</div>
+<div class="line">     *  @param activity The activity</div>
+<div class="line">     *  @param needSaveDraft Need save draft or not.</div>
+<div class="line">     *  @param needSaveCover Need save cover or not.</div>
+<div class="line">     *  @param needSaveVideo Need save video or not.</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 跳转发布页面回调</div>
+<div class="line">     *  @param activity The activity</div>
+<div class="line">     *  @param needSaveDraft 是否要保存草稿</div>
+<div class="line">     *  @param needSaveCover 是否要保存封面</div>
+<div class="line">     *  @param needSaveVideo 是否要保存视频</div>
+<div class="line">     *  @param videoPath 视频地址</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    void publishWithInfo(Activity activity, boolean needSaveDraft, boolean needSaveCover, boolean needSaveVideo, String videoPath)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md22"></a>
+编辑封面</h3>
+<div class="fragment"><div class="line">/** if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief EditCover</div>
+<div class="line">     *  @param activity the from activity</div>
+<div class="line">     *  @param overPoint Last editing time for cover page</div>
+<div class="line">     *  @param requestCode The request code</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 编辑封面</div>
+<div class="line">     *  @param  activity 编辑封面的发起页面</div>
+<div class="line">     *  @param  overPoint 上一次编辑封面的时间点</div>
+<div class="line">     *  @param  requestCode 请求code</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public static void editCover(Activity activity, long overPoint, int requestCode)</div>
+<div class="line"> </div>
+<div class="line">    //封面编辑不会生成Bitmap，封面的选择时间点，会在onActivityResult方法回调里返回， key是“coverPoint”</div>
+<div class="line">    public static final String INTENT_KEY_COVER_POINT = &quot;coverPoint&quot;;</div>
+<div class="line"> </div>
+<div class="line">    //可以通过CaptureAndEditUtil.java中的方法获取bitmap</div>
+<div class="line"> </div>
+<div class="line">     /** if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Get image from timeline</div>
+<div class="line">     *  @param overPoint The cover point</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 获取时间线上某一帧图片的bitmap</div>
+<div class="line">     *  @param  overPoint 选择封面的时间点</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public static Bitmap getImageFromTime(long overPoint)</div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>如果需要保存封面，见保存封面接口 </p>
+</blockquote>
+<h3><a class="anchor" id="autotoc_md23"></a>
+保存草稿</h3>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief Save draft</div>
+<div class="line">    *  @param videoDesc The draft description</div>
+<div class="line">    *  @param coverPoint The cover point</div>
+<div class="line">    *  @param callBack The draft save callback</div>
+<div class="line">    *  \else</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief 保存草稿</div>
+<div class="line">    *  @param videoDesc 草稿描述</div>
+<div class="line">    *  @param coverPoint 草稿封面</div>
+<div class="line">    *  @param callBack 保存草稿回调</div>
+<div class="line">    *  \endif</div>
+<div class="line">    */</div>
+<div class="line">   public void saveDraft(String videoDesc, long coverPoint, DraftManager.DraftSaveCallBack callBack)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md24"></a>
+合成视频</h3>
+<div class="fragment"><div class="line">/** if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Save video to album</div>
+<div class="line">     *  @param callback The on compile video listener</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 保存视频到相册</div>
+<div class="line">     *  @param  callback 保存视频回调</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public static void saveVideoToAlbum(OnCompileVideoListener callback)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md25"></a>
+视频合成回调</h3>
+<div class="fragment"><div class="line">public interface OnCompileVideoListener {</div>
+<div class="line">        /**! \if ENGLISH</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief compile video progress callback</div>
+<div class="line">         *  \@param timeline  the current timeline</div>
+<div class="line">         *  \@param progress  the current progress</div>
+<div class="line">         *  \else</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief 合成视频进度回调</div>
+<div class="line">         *  \@param timeline 当前的时间线</div>
+<div class="line">         *  \@param progress 当前的进度</div>
+<div class="line">         *  \endif</div>
+<div class="line">         */</div>
+<div class="line">        void compileProgress(NvsTimeline timeline,int progress);</div>
+<div class="line"> </div>
+<div class="line">        /**! \if ENGLISH</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief compile video finished callback</div>
+<div class="line">         *  \@param timeline  the current timeline</div>
+<div class="line">         *  \else</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief 合成视频完成回调</div>
+<div class="line">         *  \@param timeline 当前的时间线</div>
+<div class="line">         *  \endif</div>
+<div class="line">         */</div>
+<div class="line">        void compileFinished(NvsTimeline timeline);</div>
+<div class="line"> </div>
+<div class="line">        /**! \if ENGLISH</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief compile video failed callback</div>
+<div class="line">         *  \@param timeline  the current timeline</div>
+<div class="line">         *  \else</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief 合成视频失败回调</div>
+<div class="line">         *  \@param timeline 当前的时间线</div>
+<div class="line">         *  \endif</div>
+<div class="line">         */</div>
+<div class="line">        void compileFailed(NvsTimeline timeline);</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">         /**! \if ENGLISH</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief compile video completed callback</div>
+<div class="line">         *  \@param timeline  the current timeline</div>
+<div class="line">         *  \@param compileVideoPath  the compile video path</div>
+<div class="line">         *  \@param isCanceled  The compile is canceled or not</div>
+<div class="line">         *  \else</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief 合成视频完成回调</div>
+<div class="line">         *  \@param timeline 当前的时间线</div>
+<div class="line">         *  \@param compileVideoPath 保存路径</div>
+<div class="line">         *  \@param isCanceled 合成是否被取消</div>
+<div class="line">         *  \endif</div>
+<div class="line">         */</div>
+<div class="line">        void compileCompleted(NvsTimeline nvsTimeline, String compileVideoPath, boolean isCanceled);</div>
+<div class="line"> </div>
+<div class="line">        /**! \if ENGLISH</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief compile video cancel callback</div>
+<div class="line">         *  \else</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief 合成视频被取消回调</div>
+<div class="line">         *  \endif</div>
+<div class="line">         */</div>
+<div class="line">        void compileVideoCancel();</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">        /**! \if ENGLISH</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief compile video completed callback</div>
+<div class="line">         *  \@param isHardwareEncoder Is hardware encoder or not</div>
+<div class="line">         *  \@param errorType The error type</div>
+<div class="line">         *  \@param stringInfo The error string info</div>
+<div class="line">         *  \@param flags the  flags</div>
+<div class="line">         *  \else</div>
+<div class="line">         *</div>
+<div class="line">         *  \brief 合成视频完成回调</div>
+<div class="line">         *  \@param isHardwareEncoder 是否是硬件错误</div>
+<div class="line">         *  \@param errorType 错误类型</div>
+<div class="line">         *  \@param stringInfo 提示信息</div>
+<div class="line">         *  \@param flags the  flags</div>
+<div class="line">         *  \endif</div>
+<div class="line">         */</div>
+<div class="line">        void onCompileCompleted(boolean isHardwareEncoder, int errorType, String stringInfo, int flags);</div>
+<div class="line">    }</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
+保存封面图片</h3>
+<div class="fragment"><div class="line">/** if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Save cover</div>
+<div class="line">     *  @param  coverDir the cover file dir.</div>
+<div class="line">     *  @param  coverFileName the cover file name.If empty, it is a timestamp.</div>
+<div class="line">     *  @param  coverTime the coverTime</div>
+<div class="line">     *   @param  needSaveToAlbum Need Save To Album or not</div>
+<div class="line">     *   @param  callBack the on cover saved callback for update ui</div>
+<div class="line">     *  @return the boolean Did you successfully execute the save draft</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 保存封面</div>
+<div class="line">     *  @param  coverDir 封面文件夹路径</div>
+<div class="line">     *  @param  coverFileName 封面文件明显,如果为空，则是时间戳</div>
+<div class="line">     *  @param  coverTime 封面时间点</div>
+<div class="line">     *  @param  needSaveToAlbum 是否需要保存封面</div>
+<div class="line">     *  @param  callBack 保存草稿回调，用于更新UI</div>
+<div class="line">     *  @return the boolean 是否执行保存草稿成功</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public boolean saveCover(String coverDir, String coverFileName, long coverTime, boolean needSaveToAlbum, OnCoverSavedCallBack callBack)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md27"></a>
+退出短视频模块</h3>
+<p>视频发布页退出时调用</p>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief Finish publish</div>
+<div class="line">    *  @param activity The activity</div>
+<div class="line">    *  @param toActivityClassName The next activity classname you want to</div>
+<div class="line">    *  \else</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief 退出发布页</div>
+<div class="line">    *  @param activity 当前页面</div>
+<div class="line">    *  @param toActivityClassName 要去的页面的类名</div>
+<div class="line">    *  \endif</div>
+<div class="line">    */</div>
+<div class="line">   public void finishPublish(Activity activity, String toActivityClassName)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md28"></a>
+获取草稿列表</h3>
+<p>方法定义在DraftManager.java中</p>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief Get all draft data</div>
+<div class="line">    *  @return  The draft data list</div>
+<div class="line">    *  \else</div>
+<div class="line">    *</div>
+<div class="line">    *  \brief 获取草稿数据</div>
+<div class="line">    *  @return  The draft data list</div>
+<div class="line">    *  \endif</div>
+<div class="line">    */</div>
+<div class="line">   public List&lt;DraftData&gt; getAllDraftData()</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md29"></a>
+删除草稿</h3>
+<p>方法定义在DraftManager.java中</p>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Delete draft</div>
+<div class="line">     *  @param   draftData The draft data</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 获取草稿数据</div>
+<div class="line">     *  @param  draftData The draft data</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public void deleteDraft(final DraftData draftData)</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md30"></a>
+打开草稿</h3>
+<div class="fragment"><div class="line">/** \if ENGLISH</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief Open draft and jump to edit activity</div>
+<div class="line">     *  @param activity The activity</div>
+<div class="line">     *  @param draftData the draft data</div>
+<div class="line">     *  \else</div>
+<div class="line">     *</div>
+<div class="line">     *  \brief 打开草稿,并跳转编辑页面</div>
+<div class="line">     *  @param activity 当前页面</div>
+<div class="line">     *  @param draftData 草稿数据</div>
+<div class="line">     *  \endif</div>
+<div class="line">     */</div>
+<div class="line">    public void openDraftAndJumpToEdit(Activity activity, DraftData draftData)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+模块设置</h2>
+<p>短视频模块设置类NvVideoConfig，包含功能模块设置、UI定制。详见：<a href="functionConfiguration_ch.html">短视频功能模块设置</a>、<a href="UIConfiguration_ch.html">短视频UI模块设置</a></p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+开发者合规指南</h2>
+<p><a href="https://www.meishesdk.com/compliance-guide/">开发者合规指南</a> </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>美摄短视频: 美摄短视频模块接入指引</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">美摄短视频
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">美摄短视频模块接入指引 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__Users_mac-mini_msshortvideo_doc_markdown_native_quickstart_doc_ch_quickstart_ch"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+接入必须流程</h1>
+<ul>
+<li>先按照当前文档，集成</li>
+<li>联系商务要sdk的授权</li>
+<li>shortvideo默认调用的是美摄自己的服务器，接入后要求把服务器移植到客户自己服务器上，这里你可以联系商务，我们会安排同事帮你部署服务器。</li>
+<li>如果你要修改当前app的显示你可以参考当前文档的UI配置，或者模块配置来修改（如果不需要修改UI，不用理会这一条）</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+开发环境要求</h1>
+<ul>
+<li>iOS 12.0 及以上的 iPhone</li>
+<li>Swift 5</li>
+<li>CocoaPods</li>
+</ul>
+<blockquote class="doxtable">
+<p>⚠️ <b>Note:</b> 需要在真机上运行，模拟器暂不支持 </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md3"></a>
+升级短视频注意事项</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+2.0.0版本升级:</h2>
+<ul>
+<li>修复了一些已知问题 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+1.5.1版本升级:</h2>
+<ul>
+<li>修复了一些已知问题 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+1.5.0版本升级:</h2>
+<ul>
+<li>此版本更新较大，上线之前一定要进行回归测试，尤其是配置项的变化 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md7"></a>
+1.4.0版本升级:</h2>
+<ul>
+<li>短视频内部几乎代码转为swift开发，在native的使用上有一些变化,重点关注shortvideo暴露的swift接口变化以及回调是否正常触发</li>
+<li>NvStreamingSdkCore.xcframework升级到3.15.3，如果你是从1.4.0版本以下升级到这个版本，需要联系商务同事更新sdk授权</li>
+<li>一键成片做了全新升级，可以在支持群联系服务端开发同事协助升级服务端接口，这个只在ios上做了升级，安卓并没有做升级，所以使用一键成片功能，一定要联系我们的服务端同事协助升级。有任何问题都可以联系我们 <div class="fragment"><div class="line">private func setWebConfig() {</div>
+<div class="line">      let moduleManager = NvModuleManager.sharedInstance()</div>
+<div class="line">      let request = moduleManager.netDelegate!</div>
+<div class="line">      request.dependencyDelegate = dependencyDelegate</div>
+<div class="line">      request.setHost(&quot;https://mall.meishesdk.com/api/shortvideo/v1&quot;)</div>
+<div class="line">      request.assetAutoCutUrl = &quot;https://creative.meishesdk.com/api/app/aivideo/asset/all/1&quot;</div>
+<div class="line">      </div>
+<div class="line">      if isCurrentLanguageNoChinese() {</div>
+<div class="line">          request.isAbroad = 1</div>
+<div class="line">      }</div>
+<div class="line">      _ = moduleManager.prepareDownloadFolders()</div>
+<div class="line">      networkState()</div>
+<div class="line">  }</div>
+</div><!-- fragment --></li>
+<li>服务端的更新请联系我们的服务端的同事 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+1.3.0版本升级:</h2>
+<ul>
+<li>1.3.0版本调整编辑右侧发布和保存按钮到底部，按钮UI配置的key不变，增加报错多张图片功能。短视频内部将一部分代码转为swift开发，在native的使用上有少部分变化,重点关注shortvideo的回调是否正常触发，通常xcode会自动提示，按提示修改即可，flutter和reactnative没有变化。 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+1.2.9版本升级：</h2>
+<ul>
+<li>1.2.9版本新增了导出带水印的视频和图片，如果用户配置了水印，那么在导出时视频和封面是带水印的。 </li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+1.2.8版本升级：</h2>
+<ul>
+<li>1.2.7版本进入拍摄、编辑、合拍时需要先下载资源，新版本不会阻塞进入拍摄、编辑、合拍，会在进入的时候后台默默下载。同时也提供了接口用户也可以主动调用，如果用户不主动调用shortvideo将会默认调用。 <div class="fragment"><div class="line">- (void)downloadPrefabricatedMaterialCompletion:(void (^_Nullable)(BOOL isFinish))completionHandler;</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md11"></a>
+1.2.7版本升级：</h2>
+<ul>
+<li>原生工程直接替换Frameworks库 1.2.7版本在<code>startCaptureWithPresentViewController</code> <code>startDualCaptureWithPresentViewController</code> <code>startEditWithPresentViewController</code>中的block参数中，将原来的void改为了BOOL值，使用时请注意，如果你的block传的是nil，升级后不会有变化。如果你传的不是空请注意下面的block参数。 <div class="fragment"><div class="line">- (void)startCaptureWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                       config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                        music:(NvCaptionMusicInfo * _Nullable)music</div>
+<div class="line">                                         with:(void(^)(BOOL isFinish))complatetionHandler;</div>
+<div class="line">- (void)startDualCaptureWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                           config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                             with:(void(^)(BOOL isFinish))complatetionHandler;</div>
+<div class="line">- (void)startEditWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                    config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                      with:(void(^)(BOOL isFinish))complatetionHandler;</div>
+</div><!-- fragment --></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
+支持媒体格式</h1>
+<p>详见：<a href="https://www.meishesdk.com/ios/doc_ch/html/content/Introduction_8md.html">美摄sdk产品概述</a></p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+短视频模块集成</h1>
+<p>短视频模块下载解压后，以CocoaPods本地私有库的方式使用，解压后文件目录如下：</p>
+<p><img src="../assets/image.png" alt="alt text" class="inline"/></p>
+<ol type="1">
+<li>创建 Podfile 文件 进入项目所在路径，输入以下命令行之后项目路径下会出现一个 Podfile 文件。</li>
+</ol>
+<div class="fragment"><div class="line">pod init</div>
+</div><!-- fragment --><ol type="1">
+<li>编辑 Podfile 文件, 添加短视频模块依赖 建议使用参数: use_frameworks!</li>
+</ol>
+<div class="fragment"><div class="line">platform :ios, &#39;12.0&#39;</div>
+<div class="line">source &#39;https://github.com/CocoaPods/Specs.git&#39;</div>
+<div class="line">use_frameworks!</div>
+<div class="line"> </div>
+<div class="line">target &#39;App&#39; do</div>
+<div class="line">  # NvShortVideoCore</div>
+<div class="line">  pod &#39;NvShortVideoEdit&#39;,    :path =&gt; &#39;../Pods-NvShortVideoEdit&#39;</div>
+<div class="line">end</div>
+</div><!-- fragment --><ol type="1">
+<li>安装依赖</li>
+</ol>
+<div class="fragment"><div class="line">pod install</div>
+</div><!-- fragment --><ol type="1">
+<li>copy demo文件 如果你是flutter用户或者reactnative用户这一步你不用关心。如果你是原生工程接入你需要copy demo中的两个文件Config.swift、NvHttpRequestDelegate.swift到你的工程中，Config.swift文件是为了配置网络接口url的，你只需要把host改为你自己服务器就行了，NvHttpRequestDelegate是为了加载第三方库。 之后在你的代码中对URL进行配置,在当前控制器中调用setWebConfig(),最后就是点击按钮的时候进入shortvideo的拍摄和编辑页面了。 请参考下面代码。 <div class="fragment"><div class="line">...</div>
+<div class="line">var videoConfig: NvVideoConfig?</div>
+<div class="line">let dependencyDelegate = NvHttpRequestDelegate()</div>
+<div class="line">override func viewDidLoad() {</div>
+<div class="line">    super.viewDidLoad()</div>
+<div class="line">    // Do any additional setup after loading the view.</div>
+<div class="line">    setupModuleManager()</div>
+<div class="line">    </div>
+<div class="line">    //web config</div>
+<div class="line">    setWebConfig()</div>
+<div class="line">    test()</div>
+<div class="line">}</div>
+<div class="line">private func setWebConfig() {</div>
+<div class="line">    let moduleManager = NvModuleManager.sharedInstance()</div>
+<div class="line">    // 这里如果你有自己实现HttpRequest类，那么这里你可以创建一个HttpRequest对象实例赋值给moduleManager.netDelegate，并设置好url</div>
+<div class="line">    // Here if you have your own implementation HttpRequest class,</div>
+<div class="line">    // so here you can create an HttpRequest object instance assigned to moduleManager.net Delegate, and set up the url</div>
+<div class="line">    let request = moduleManager.netDelegate as! NvHttpRequest</div>
+<div class="line">    request.dependencyDelegate = dependencyDelegate</div>
+<div class="line">    request.assetRequestUrl = NV_ASSET_REQUEST_URL</div>
+<div class="line">    request.assetCategoryUrl = NV_ASSET_CATEGORY_URL</div>
+<div class="line">    request.assetMusiciansUrl = NV_ASSET_MUSICIANS_URL</div>
+<div class="line">    request.assetFontUrl = NV_ASSET_FONT_URL</div>
+<div class="line">    request.assetDownloadUrl = NV_ASSET_DOWNLOAD_URL</div>
+<div class="line">    request.assetPrefabricatedUrl = NV_ASSET_PREFABRICATED_URL</div>
+<div class="line">    request.assetAutoCutUrl = NV_ASSET_AUTOCUT_URL</div>
+<div class="line">    request.assetTagUrl = NV_ASSET_TAG_URL</div>
+<div class="line">    </div>
+<div class="line">    request.clientId = NV_ClientId</div>
+<div class="line">    request.clientSecret = NV_ClientSecret</div>
+<div class="line">    request.assemblyId = NV_AssemblyId</div>
+<div class="line">    </div>
+<div class="line">    if isCurrentLanguageNoChinese() {</div>
+<div class="line">        request.isAbroad = 1</div>
+<div class="line">    }</div>
+<div class="line">    moduleManager.prepareDownloadFolders()</div>
+<div class="line">    networkState()</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">func isCurrentLanguageNoChinese() -&gt; Bool {</div>
+<div class="line">    guard let language = Locale.preferredLanguages.first else {</div>
+<div class="line">        return false</div>
+<div class="line">    }</div>
+<div class="line">    return !language.hasPrefix(&quot;zh&quot;)</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">func networkState() {</div>
+<div class="line">    let monitor = NWPathMonitor()</div>
+<div class="line">    let queue = DispatchQueue(label: &quot;NetworkMonitor&quot;)</div>
+<div class="line">    monitor.pathUpdateHandler = { path in</div>
+<div class="line">        if path.status == .satisfied {</div>
+<div class="line">            // 网络可用</div>
+<div class="line">            DispatchQueue.main.async {</div>
+<div class="line">                let moduleManager = NvModuleManager.sharedInstance()</div>
+<div class="line">                moduleManager.preloadedResource()</div>
+<div class="line">            }</div>
+<div class="line">            monitor.cancel()</div>
+<div class="line">        } else {</div>
+<div class="line">            // 网络不可用</div>
+<div class="line">            print(&quot;Network not reachable&quot;)</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    monitor.start(queue: queue)</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md14"></a>
+系统授权</h1>
+<p>App 需要在 Info.plist 中添加以下权限，否则将无法使用短视频模块。</p>
+<div class="fragment"><div class="line">&lt;<span class="keywordtype">key</span>&gt;<span class="keyword">NSCameraUsageDescription</span>&lt;/<span class="keywordtype">key</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">string</span>&gt;<span class="keyword">App需要您的同意</span>,<span class="keyword">才能访问相机</span>&lt;/<span class="keywordtype">string</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">key</span>&gt;<span class="keyword">NSMicrophoneUsageDescription</span>&lt;/<span class="keywordtype">key</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">string</span>&gt;<span class="keyword">App需要您的同意</span>,<span class="keyword">才能访问麦克风</span>&lt;/<span class="keywordtype">string</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">key</span>&gt;<span class="keyword">NSPhotoLibraryUsageDescription</span>&lt;/<span class="keywordtype">key</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">string</span>&gt;<span class="keyword">App需要您的同意</span>,<span class="keyword">才能访问相册</span>&lt;/<span class="keywordtype">string</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">key</span>&gt;<span class="keyword">NSAppleMusicUsageDescription</span>&lt;/<span class="keywordtype">key</span>&gt;</div>
+<div class="line">&lt;<span class="keywordtype">string</span>&gt;<span class="keyword">App需要您的同意</span>,<span class="keyword">才能访问音乐</span>&lt;/<span class="keywordtype">string</span>&gt;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
+美摄SDK授权</h1>
+<p>美摄SDK授权方法：</p>
+<div class="fragment"><div class="line">#import &lt;NvStreamingSdkCore/NvsStreamingContext.h&gt;</div>
+<div class="line"> </div>
+<div class="line">@interface AppDelegate ()</div>
+<div class="line">@end</div>
+<div class="line"> </div>
+<div class="line">@implementation AppDelegate</div>
+<div class="line"> </div>
+<div class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {</div>
+<div class="line">    NSString *licPath = [[NSBundle mainBundle] pathForResource:@&quot;meicam_licence&quot; ofType:@&quot;lic&quot;];</div>
+<div class="line">    BOOL ret = [NvsStreamingContext verifySdkLicenseFile:licPath];</div>
+<div class="line">    if (!ret) {</div>
+<div class="line">        NSLog(@&quot;verifySdkLicenseFile faild&quot;);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    return YES;</div>
+<div class="line">}</div>
+<div class="line">@end</div>
+</div><!-- fragment --><div class="fragment"><div class="line">func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool {</div>
+<div class="line">    // Override point for customization after application launch.</div>
+<div class="line">    let licPath = Bundle.main.path(forResource: &quot;meishesdk&quot;, ofType: &quot;lic&quot;)</div>
+<div class="line">    if NvsStreamingContext.verifySdkLicenseFile(licPath) {</div>
+<div class="line">        print(&quot;verifySdkLicenseFile success&quot;)</div>
+<div class="line">    } else {</div>
+<div class="line">        print(&quot;verifySdkLicenseFile failed&quot;)</div>
+<div class="line">    }</div>
+<div class="line">    return true</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>在<a href="https://www.meishesdk.com">美摄官网</a>注册用户后，创建应用，配置Bundle Idenfity，由美摄商务同事开通授权后，可在应用信息中下载授权文件。</p>
+<p>需要将授权.lic文件添加到App工程中</p>
+<blockquote class="doxtable">
+<p>SDK授权和App的Bundle Idenfity绑定。未授权时，SDK全功能不再检查授权，都可以使用，绘制的画面会带MEISHE水印。 </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md16"></a>
+网络接口配置</h1>
+<p>短视频模块用到的滤镜、贴纸、音乐等文件均通过网络接口获取。需要服务端按接口文档实现相应的接口。 在App工程中配置服务器地址及公共参数。</p>
+<div class="fragment"><div class="line">// 参考这个方法配置网络接口</div>
+<div class="line">private func setWebConfig() {}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+预制素材</h1>
+<p>短视频模块依赖的素材包可根据需要选择。预制素材详见：<a href="./PrefabricatedMaterial_ch.html">短视频模块预制素材</a> 下载预置素材,如果你调用这个接口后，shortvideo在进入的时候就不会重复调用，如果你不调用，shortvideo在进入的时候就会默认后台调用。 </p><div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Download material</div>
+<div class="line"> *  \param completionHandler Completion callback</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 下载素材</div>
+<div class="line"> *  素材类型</div>
+<div class="line"> *  \param completionHandler 完成回调</div>
+<div class="line"> *  \endif</div>
+<div class="line"> *  */</div>
+<div class="line">- (void)downloadPrefabricatedMaterialCompletion:(void (^_Nullable)(BOOL isFinish))completionHandler;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
+短视频模块主要方法</h1>
+<p>模块主要方法定义在<a href="./interface_nv_module_manager.html">NvModuleManager.h</a>文件中。 调用示例：</p>
+<div class="fragment"><div class="line">let moduleManager = NvModuleManager.sharedInstance()</div>
+<div class="line">moduleManager.downloadPrefabricatedMaterialCompletion(nil)</div>
+<div class="line">guard let navigationController = navigationController else { return }</div>
+<div class="line">moduleManager.startCapture(</div>
+<div class="line">    withPresent: navigationController,</div>
+<div class="line">    config: videoConfig,</div>
+<div class="line">    music: nil</div>
+<div class="line">) { isFinish in</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line">// 引入头文件</div>
+<div class="line">#import &lt;NvShortVideoCore/NvShortVideoCore.h&gt;</div>
+<div class="line"> </div>
+<div class="line">- (IBAction)sendertapCapture:(UIButton*)bt {</div>
+<div class="line">    bt.enabled = NO;</div>
+<div class="line">    NvVideoConfig *config = [[NvVideoConfig alloc] init];</div>
+<div class="line">    NvModuleManager* moduleManager = [NvModuleManager sharedInstance];</div>
+<div class="line">    [moduleManager startCaptureWithPresentViewController:self.navigationController config:config music:nil with:^{</div>
+<div class="line">        bt.enabled = YES;</div>
+<div class="line">    }];</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
+视频录制</h2>
+<div class="fragment"><div class="line"> /*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Shooting entrance</div>
+<div class="line"> *  \param viewController Current viewController</div>
+<div class="line"> *  \param config Configuration item</div>
+<div class="line"> *  \param music The default is nil，If you need to shoot with music, you need to pass an audio object, and the path of the audio must be local and has been downloaded</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 拍摄入口</div>
+<div class="line"> *  \param viewController 当前控制器</div>
+<div class="line"> *  \param config 配置项</div>
+<div class="line"> *  \param music 默认是nil，如果拍摄时需要带音乐拍摄，需要传递一个音频对象，音频的路径必须是本地的，已经下载的路径</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)startCaptureWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                       config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                        music:(NvCaptionMusicInfo * _Nullable)music</div>
+<div class="line">                                         with:(void(^)(void))complatetionHandler;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
+合拍</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief PIP entrance By default, the album is opened, and a material from the album is taken into the beat</div>
+<div class="line"> *  \param viewController Current viewController</div>
+<div class="line"> *  \param config Configuration item</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 合拍入口，默认打开相册，从相册取一个素材进入合拍</div>
+<div class="line"> *  \param viewController 当前控制器</div>
+<div class="line"> *  \param config 配置项</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)startDualCaptureWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                           config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                             with:(void(^)(void))complatetionHandler;</div>
+<div class="line"> </div>
+<div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief PIP entrance</div>
+<div class="line"> *  \param viewController Current viewController</div>
+<div class="line"> *  \param config Configuration item</div>
+<div class="line"> *  \param videoPath The video path to be filmed must be a local path</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 合拍入口</div>
+<div class="line"> *  \param viewController 当前控制器</div>
+<div class="line"> *  \param config 配置项</div>
+<div class="line"> *  \param videoPath 准备合拍的视频路径，必须是本地路径</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)startDualCaptureWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                           config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                        videoPath:(NSString *)videoPath</div>
+<div class="line">                                             with:(void(^)(void))complatetionHandler;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
+视频编辑</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Edit entrance</div>
+<div class="line"> *  \param viewController Current viewController</div>
+<div class="line"> *  \param config Configuration item</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 编辑入口</div>
+<div class="line"> *  \param viewController 当前控制器</div>
+<div class="line"> *  \param config 配置项</div>
+<div class="line"> *  \param complatetionHandler</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)startEditWithPresentViewController:(UIViewController *)viewController</div>
+<div class="line">                                    config:(NvVideoConfig * _Nullable)config</div>
+<div class="line">                                      with:(void(^)(void))complatetionHandler;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
+视频编辑完成回调</h2>
+<div class="fragment"><div class="line">/*!</div>
+<div class="line"> * \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Edit complete, ready to enter publish callback</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 编辑完成，准备进入发布回调</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">@protocol NvModuleManagerDelegate &lt;NSObject&gt;</div>
+<div class="line"> </div>
+<div class="line">/*!</div>
+<div class="line"> * \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Edit complete, jump release callback</div>
+<div class="line"> *  @param taskId  Edit the event id used to exit the module</div>
+<div class="line"> *  @param coverImagePath cover</div>
+<div class="line"> *  @param hasDraft Whether there is a draft button</div>
+<div class="line"> *  @param draftInfo The title displayed on the publish page</div>
+<div class="line"> *  @param videoEditNavigationController Current nav controller</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 编辑完成，跳转发布回调</div>
+<div class="line"> *  @param taskId 编辑事件id，用于退出模块</div>
+<div class="line"> *  @param coverImagePath 封面图</div>
+<div class="line"> *  @param hasDraft 是否有草稿按钮</div>
+<div class="line"> *  @param draftInfo 发布页显示的标题</div>
+<div class="line"> *  @param videoEditNavigationController 当前nav控制器</div>
+<div class="line"> *  \endif</div>
+<div class="line"> *  \sa exitVideoEdit:</div>
+<div class="line"> */</div>
+<div class="line">- (void)publishWithTaskId:(NSString *)taskId</div>
+<div class="line">           coverImagePath:(NSString *)coverImagePath</div>
+<div class="line">                 hasDraft:(BOOL)hasDraft</div>
+<div class="line">                draftInfo:(NSString *_Nullable)draftInfo</div>
+<div class="line">videoEditNavigationController:(UINavigationController *)videoEditNavigationController;</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">@end</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
+选择封面</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Save the cover image to the album</div>
+<div class="line"> *  \param coverPath Current cover map path</div>
+<div class="line"> *  \param completionHandler</div>
+<div class="line"> *  \warning Publish page Save picture button, click after the call</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 保存封面图到相册</div>
+<div class="line"> *  \param coverPath 当前封面图路径</div>
+<div class="line"> *  \param completionHandler</div>
+<div class="line"> *  \warning 发布页保存图片按钮，点击之后调用</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)saveCover:(NSString *)coverPath with:(nullable void(^)(BOOL success))completionHandler;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
+保存草稿</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Save draft</div>
+<div class="line"> *  \param infoString The text of the currently saved publication page</div>
+<div class="line"> *  \warning Publish page Save draft button, called after clicking</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 保存草稿</div>
+<div class="line"> *  \param infoString 当前保存的发布页文本</div>
+<div class="line"> *  \warning 发布页保存草稿按钮，点击之后调用</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (BOOL)saveCurrentDraftWithDraftInfo:(NSString *_Nullable)infoString;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
+合成视频</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Start exporting video</div>
+<div class="line"> *  \param configure Default is nil, no need to pass</div>
+<div class="line"> *  \warning Publish page Save video button, click after the call</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 开始导出视频</div>
+<div class="line"> *  \param configure 默认是nil，不需要传</div>
+<div class="line"> *  \warning 发布页保存视频按钮，点击之后调用</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (BOOL)compileCurrentTimeline:(NSDictionary *_Nullable)configure;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md26"></a>
+视频合成回调</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief sdk video export callback</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief sdk视频导出回调</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">@protocol NvModuleManagerCompileStateDelegate &lt;NSObject&gt;</div>
+<div class="line"> </div>
+<div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief compile video progress callback</div>
+<div class="line"> *  \param progress  the current progress</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 合成视频进度回调</div>
+<div class="line"> *  \param progress 当前的进度</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)didCompileFloatProgress:(float)progress;</div>
+<div class="line"> </div>
+<div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief The resultant video completes the callback</div>
+<div class="line"> *  \param outputPath Video output file path</div>
+<div class="line"> *  \param error error</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 合成视频完成回调</div>
+<div class="line"> *  \param outputPath 视频输出的文件路径</div>
+<div class="line"> *  \param error 错误信息</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)didCompileCompleted:(NSString *_Nullable)outputPath error:(NSError *_Nullable)error;</div>
+<div class="line"> </div>
+<div class="line">@end</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
+保存视频</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Save the video to the album</div>
+<div class="line"> *  \param coverPath Current video path</div>
+<div class="line"> *  \param completionHandler</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 保存视频到相册</div>
+<div class="line"> *  \param coverPath 当前视频路径</div>
+<div class="line"> *  \param completionHandler</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)saveVideo:(NSString *)videoPath with:(nullable void(^)(BOOL success))completionHandler;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
+保存封面图片</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Save the cover image to the album</div>
+<div class="line"> *  \param coverPath Current cover map path</div>
+<div class="line"> *  \param completionHandler</div>
+<div class="line"> *  \warning Publish page Save picture button, click after the call</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 保存封面图到相册</div>
+<div class="line"> *  \param coverPath 当前封面图路径</div>
+<div class="line"> *  \param completionHandler</div>
+<div class="line"> *  \warning 发布页保存图片按钮，点击之后调用</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)saveCover:(NSString *)coverPath with:(nullable void(^)(BOOL success))completionHandler;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md29"></a>
+获取当前选择的素材路径</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Get a list of all currently selected materials</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 获取当前所选所有素材列表</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (NSMutableArray *)getAVFileInfoArray;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md30"></a>
+获取素材的信息</h2>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Get material information</div>
+<div class="line"> *  \param path material path</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 获取素材信息</div>
+<div class="line"> *  \param path 素材路径</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (NvsAVFileInfo*)getAVFileInfo:(NSString *)path;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+退出短视频模块</h2>
+<p>视频发布页退出时调用</p>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Exit the entire publisher call</div>
+<div class="line"> *  \param taskId Returned by the edit completion callback</div>
+<div class="line"> *  \warning This method will clean up the current draft and SDK-held resources, please call after completely exiting the editing and publishing process</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 退出整个发布器调用</div>
+<div class="line"> *  \param taskId 由编辑完成回调中返回</div>
+<div class="line"> *  \warning 该方法会清理当前草稿以及sdk持有资源，请在完全退出编辑发布流程之后，调用</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (BOOL)exitVideoEdit:(NSString *)taskId;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md32"></a>
+获取草稿列表</h2>
+<p>方法定义在<a href="./interface_nv_draft_manager.html">NvDraftModel.h</a>中</p>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Gets all drafts saved in the sandbox</div>
+<div class="line"> *  \return draft list</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 获取沙盒中保存的所有草稿</div>
+<div class="line"> *  \return 草稿列表</div>
+<div class="line"> *  \endif</div>
+<div class="line">*/</div>
+<div class="line">+ (NSMutableArray&lt;NvDraftModel *&gt; *)getUserDraftFileArray;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md33"></a>
+删除草稿</h2>
+<p>方法定义在<a href="./interface_nv_draft_manager.html">NvDraftModel.h</a>中</p>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Delete a draft file</div>
+<div class="line"> *  \param model draft</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 删除某个草稿文件</div>
+<div class="line"> *  \param model draft</div>
+<div class="line"> *  \endif</div>
+<div class="line">*/</div>
+<div class="line">+ (void)deleteDraftFile:(NvDraftModel *)model;</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md34"></a>
+打开草稿</h2>
+<p>方法定义在<a href="./interface_nv_module_manager.html">NvModuleManager.h</a>中</p>
+<div class="fragment"><div class="line">/*! \if ENGLISH</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief Enter the editing portal through draft data recovery</div>
+<div class="line"> *  \param draft Current draft object</div>
+<div class="line"> *  \param viewController Current viewController</div>
+<div class="line"> *  \param config Configuration item</div>
+<div class="line"> *  \else</div>
+<div class="line"> *</div>
+<div class="line"> *  \brief 通过草稿数据恢复，进入编辑入口</div>
+<div class="line"> *  \param draft 当前草稿对象</div>
+<div class="line"> *  \param viewController 当前控制器</div>
+<div class="line"> *  \param config 配置项</div>
+<div class="line"> *  \endif</div>
+<div class="line"> */</div>
+<div class="line">- (void)reeditDraft:(NvDraftModel *)draft presentViewController:(UIViewController *)viewController</div>
+<div class="line">             config:(NvVideoConfig * _Nullable)config;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md35"></a>
+模块设置</h1>
+<p>短视频模块设置类NvVideoConfig，包含功能模块设置、UI定制。详见：<a href="functionConfiguration_ch.html">短视频功能模块设置</a>、<a href="UIConfiguration_ch.html">短视频UI模块设置</a></p>
+<h1><a class="anchor" id="autotoc_md36"></a>
+开发者合规指南</h1>
+<p><a href="https://www.meishesdk.com/compliance-guide/">开发者合规指南</a> </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
+</body>
+</html>

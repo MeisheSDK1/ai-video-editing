@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  NvShortVideo
+
+  Created by 美摄 on 2022/2/22.
+  
+*/
+
+"Publish"="发布";
+"Download"="下载";
+"Publish_Info"="写标题并使用合适的话题，能让更多人看到～";
+"add_description"="请添加描述～";
+"Select_Cover"="选择封面";
+"Save_Draft"="保存草稿";
+"Save_Local"="保存本地";
+"Save_Cover"="保存封面";
+"Save_Successful"="保存成功";
+"Save_Failed"="保存失败";
+"Service"="用户协议";
+"Privacy"="隐私协议";
+"setting"="设置";
+"reload"="重新加载";
+"config_clean"="清除";
+
+"DraftList"="本地草稿箱";
+"DraftListTip"="温馨提示：卸载应用后，草稿也会被删除";
+
+"DraftDelete"="确定删除";
+"DraftCancel"="否";
+"DraftConfirm"="是";

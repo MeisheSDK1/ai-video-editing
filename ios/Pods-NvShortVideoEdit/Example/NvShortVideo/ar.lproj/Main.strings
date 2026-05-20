@@ -1,0 +1,60 @@
+
+/* Class = "UIButton"; configuration.title = "  "; ObjectID = "09E-Fs-qwJ"; */
+"09E-Fs-qwJ.configuration.title" = "  ";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "09E-Fs-qwJ"; */
+"09E-Fs-qwJ.normalTitle" = "";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "1cm-BZ-I3w"; */
+"1cm-BZ-I3w.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "草稿"; ObjectID = "1j8-Vb-54V"; */
+"1j8-Vb-54V.text" = "Drafts";
+
+/* Class = "UILabel"; text = "请选择您所需功能"; ObjectID = "8Rv-ge-Hk4"; */
+"8Rv-ge-Hk4.text" = "THE BASICS";
+
+/* Class = "UILabel"; text = "meisheSDK"; ObjectID = "8y9-g0-HP6"; */
+"8y9-g0-HP6.text" = "meisheSDK";
+
+/* Class = "UILabel"; text = "功能列表"; ObjectID = "9xD-cX-kOK"; */
+"9xD-cX-kOK.text" = "Create New";
+
+/* Class = "UILabel"; text = "编辑"; ObjectID = "CHv-o8-9dy"; */
+"CHv-o8-9dy.text" = "Edit";
+
+/* Class = "UILabel"; text = "拍摄"; ObjectID = "JW0-Dc-d5g"; */
+"JW0-Dc-d5g.text" = "Shoot";
+
+/* Class = "UIButton"; normalTitle = "存草稿"; ObjectID = "KOu-GK-bA6"; */
+"KOu-GK-bA6.normalTitle" = "Save Draft";
+
+/* Class = "UIButton"; configuration.title = "  "; ObjectID = "UhC-6H-1zn"; */
+"UhC-6H-1zn.configuration.title" = "  ";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "UhC-6H-1zn"; */
+"UhC-6H-1zn.normalTitle" = "";
+
+/* Class = "UILabel"; text = "素材上新"; ObjectID = "Wix-Ow-t2S"; */
+"Wix-Ow-t2S.text" = "Hot this week";
+
+/* Class = "UIButton"; configuration.title = "  "; ObjectID = "b1y-vk-PV8"; */
+"b1y-vk-PV8.configuration.title" = "  ";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "b1y-vk-PV8"; */
+"b1y-vk-PV8.normalTitle" = "";
+
+/* Class = "UIButton"; configuration.title = "  "; ObjectID = "cAO-yY-rVZ"; */
+"cAO-yY-rVZ.configuration.title" = "  ";
+
+/* Class = "UIButton"; normalTitle = ""; ObjectID = "cAO-yY-rVZ"; */
+"cAO-yY-rVZ.normalTitle" = "";
+
+/* Class = "UIButton"; normalTitle = "保存图片"; ObjectID = "kIp-yI-rrL"; */
+"kIp-yI-rrL.normalTitle" = "Save Image";
+
+/* Class = "UILabel"; text = "合拍"; ObjectID = "ndb-7X-pLU"; */
+"ndb-7X-pLU.text" = "PIP";
+
+/* Class = "UIButton"; normalTitle = "生成"; ObjectID = "o8d-7K-CRo"; */
+"o8d-7K-CRo.normalTitle" = "Compile";

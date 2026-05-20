@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  NvShortVideo
+
+  Created by 美摄 on 2022/2/22.
+  
+*/
+
+
+"Publish"="Post";
+"Download"="Download";
+"Publish_Info"="Write a headline and use the right topic to reach more people";
+"add_description"="Please add description ~";
+"Select_Cover"="Select Cover";
+"Save_Draft"="Save Draft";
+"Save_Local"="Save to album";
+"Save_Cover"="Save Cover";
+"Save_Successful"="Save Successful";
+"Save_Failed"="Save Failed";
+
+"setting"="Setting";
+"Service" = "Terms";
+"Privacy" = "Privacy";
+
+"reload"="Reload";
+"config_clean"="Clean";
+
+"DraftList"="Drafts";
+"DraftListTip"="Tips: After uninstalling the application, the draft will also be deleted";
+
+"DraftDelete"="Confirm Delete";
+"DraftCancel"="NO";
+"DraftConfirm"="YES";

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Flap</string>
+    <string name="new_material">Hot this week</string>
+    <string name="selected_function">THE BASICS</string>
+    <string name="function_list">Create New</string>
+    <string name="edit">Edit</string>
+    <string name="capture">Shoot</string>
+    <string name="co_capture">PIP</string>
+    <string name="co_drafts">Drafts</string>
+    <string name="ms_shot_video">Flap </string>
+    <string name="no_permission">Lack of necessary permissions, please go to the Settings page to open!</string>
+</resources>
